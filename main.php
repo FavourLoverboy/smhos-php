@@ -1,12 +1,10 @@
 <?php
     session_start();
-    if(!$_SESSION['u_name']){
-        header('location: login.php');
+    if(!$_SESSION['username']){
+        header('location: login');
     }
 ?>
 
-<?php include('includes/header.php'); ?>
-    <?php include ('includes/topbar.php'); ?>
+<?php include('includes/main/header.php'); ?>
     <?php include($page); ?>
-    <?php include ('includes/bottombar.php'); ?>
-<?php include ('includes/footer.php'); ?>
+<?php include ('includes/main/footer.php'); ?>
