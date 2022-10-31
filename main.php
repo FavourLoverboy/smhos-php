@@ -26,10 +26,17 @@
             header("location: /smhos-php/$member/dashboard");
         }
     }
-
-
 ?>
 
 <?php include('includes/main/header.php'); ?>
-    <?php include($page); ?>
+    <div class="wrapper">
+        <?php include ('includes/navs/sidebar.php'); ?>
+        <div class="main-panel">
+            <?php include ('includes/navs/topbar.php'); ?>
+            <div class="content">
+                <?php include($page); ?>
+            </div>
+            <?php include ('includes/navs/bottombar.php'); ?>
+        </div>
+    </div>
 <?php include ('includes/main/footer.php'); ?>

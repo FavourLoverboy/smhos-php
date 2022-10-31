@@ -13,8 +13,8 @@
         <meta name="author" content="">
 
         <!-- Favicon -->
-        <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon.ico">
-        <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="../assets/favicon.ico">
 
         <!-- title -->
 
@@ -26,8 +26,8 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
 
         <!-- Custom styles for this template-->
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/main.css">
     </head>
     <body class="">
         
