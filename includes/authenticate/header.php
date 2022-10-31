@@ -39,3 +39,21 @@
             </ul>
         </nav>
         <!-- End of Topbar -->
+
+        <?php
+
+            if($_SESSION['level'] == 'A'){
+                $pathOne = 'admin';
+            }else if($_SESSION['level'] == 'C'){
+                $pathOne = 'church';
+            }else if($_SESSION['level'] == 'L'){
+                $pathOne = 'leader';
+            }else{
+                $pathOne = 'member';
+            }
+
+            if($_SESSION['myId']){
+                header("location: $pathOne/dashboard");
+            }
+
+        ?>
