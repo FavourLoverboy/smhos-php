@@ -1,3 +1,8 @@
+<?php 
+    include("config/db.php");
+    $connect = new DB();
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
