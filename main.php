@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!$_SESSION['myId']){
-        header('location: /smhos-php/login.php');
+        header('location: /smhos-php/');
     }
 ?>
 
