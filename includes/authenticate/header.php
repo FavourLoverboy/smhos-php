@@ -22,7 +22,7 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar-non mb-4 static-top shadow">
-            <img src="" alt="Church logo" class="img-fluid ml-3">
+            <img src="assets\logo.png" alt="Church logo" class="img-fluid ml-3">
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">       
