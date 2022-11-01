@@ -18,7 +18,7 @@
         include('main.php');
     }
     elseif(!file_exists("views/$filePath/" . $url[1] . '.php') && $url[0] != "") {
-        header('location: /smhos-php/404');
+        include('404.php');
     }
 ?>
     
