@@ -70,3 +70,9 @@
         </div>
     </div>
 </div>
+<?php 
+    $_SESSION['Message'] = '';
+    $_SESSION['name'] = '';
+    $_SESSION['church'] = '';
+    $_SESSION['address'] = '';
+?>
