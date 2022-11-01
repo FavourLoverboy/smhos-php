@@ -3,7 +3,7 @@
         <div class="card">
             <div class="row">
                 <div class="col-3">
-                    <a href="/<%= page %>/add_church">
+                    <a href="add_church">
                         <button type="button" class="btn btn-info ml-2">Add Church</button>
                     </a>
                 </div>
@@ -11,9 +11,14 @@
 
             <div class="card-header">
                 <h4 class="card-title">Churches</h4>
-                <% if(success){ %>
-                    <label style="color: green;"><%= success %></label>
-                <% } %>
+                <?php 
+                    if($_SESSION['Message']){
+                        echo "
+                            <label style='color: green;font-size:20px;'>$_SESSION[Message]</label>
+                        ";
+                    }
+                
+                ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -28,6 +33,7 @@
                         </thead>
                         <tbody>
                             <?php
+                            
                                 $tblquery = "SELECT churches.id, churches.name, churches.lga, churches.country, COUNT(homecells.church_id) AS homecells FROM churches INNER JOIN homecells ON churches.id = homecells.church_id GROUP BY homecells.church_id ORDER BY homecells";
                                 $tblvalue = array();
                                 $select =$connect->tbl_select($tblquery, $tblvalue);
@@ -69,3 +75,7 @@
         </div>
     </div>
 </div>
+
+<?php
+    $_SESSION['Message'] = '';
+?>
