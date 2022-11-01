@@ -53,6 +53,7 @@
                                                     <td>
                                                         <form action='' method='POST'>
                                                             <input type='hidden' name='id' value='$id'>
+                                                            <input type='hidden' name='name' value='$name'>
                                                             <button class='btn btn-info btn-sm'>view</button>
                                                         </form>
                                                     </td>
@@ -78,4 +79,10 @@
 
 <?php
     $_SESSION['Message'] = '';
+    if($_POST){
+        extract($_POST);
+        $_SESSION['view_church_id'] = $id;
+        $_SESSION['view_church_name'] = $name;
+        echo "<script>  window.location='view_church' </script>";
+    }
 ?>
