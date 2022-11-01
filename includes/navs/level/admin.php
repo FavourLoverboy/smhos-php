@@ -5,19 +5,19 @@
     </a>
 </li>
 <li>
-    <a href="church">
+    <a href="churches">
         <i class="nc-icon nc-shop"></i>
         <p>Churches</p>
     </a>
 </li>
 <li>
-    <a href="homecell">
+    <a href="homecells">
         <i class="nc-icon nc-shop"></i>
         <p>Homecells</p>
     </a>
 </li>
 <li>
-    <a href="member">
+    <a href="members">
         <i class="nc-icon nc-shop"></i>
         <p>Members</p>
     </a>

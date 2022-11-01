@@ -24,7 +24,7 @@
             $insert =$connect->tbl_insert($tblquery, $tblvalue);
             if($insert){
                 $_SESSION['Message'] = 'Church has been added';
-                echo "<script>  window.location='church' </script>";
+                echo "<script>  window.location='churches' </script>";
             }
         }else{
             $_SESSION['Message'] = 'Church Name already exits';
