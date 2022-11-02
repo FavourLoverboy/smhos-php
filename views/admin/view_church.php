@@ -296,7 +296,7 @@
                                 }else{
                                     echo "
                                         <tr>
-                                            <td colspan='4'>There is no Homecell</td>
+                                            <td colspan='4'>There is no Leader for this Church</td>
                                         </tr>
                                     ";
                                 }                              
@@ -310,6 +310,7 @@
                             <tr>
                                 <td colspan="3"></td>
                                 <td class="text-right">
+                                    <a href="add_church_leader" class='btn btn-success btn-sm'>add</a>
                                 </td>
                             </tr>
                         </tfoot>
