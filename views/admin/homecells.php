@@ -46,9 +46,10 @@
                                                 <td>$address</td>
                                                 <td>$members</td>
                                                 <td class='text-right'>
-                                                    <form method='post'>
-                                                        <input type='hidden' name='member_id' value='$id'>
-                                                        <input type='submit' name='view_homecell' class='btn btn-success btn-sm' value='view'>
+                                                    <form method='post' action=''>
+                                                        <input type='hidden' name='homecell_id' value='$id'>
+                                                        <input type='hidden' name='homecell_name' value='$name'>
+                                                        <input type='submit' class='btn btn-success btn-sm' value='view'>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -75,4 +76,11 @@
     $_SESSION['name'] = '';
     $_SESSION['church'] = '';
     $_SESSION['address'] = '';
+
+    if($_POST){
+        extract($_POST);
+        $_SESSION['view_homecell_id'] = $homecell_id;
+        $_SESSION['view_homecell_name'] = $homecell_name;
+        echo "<script>  window.location='view_homecell' </script>";
+    }
 ?>
