@@ -29,9 +29,10 @@
                     );
                     $select1 = $connect->tbl_select($tblquery, $tblvalue);
                     if(!$select1){
-                        $tblquery1 = "INSERT INTO tbl_leaders VALUES(:id, :user_id, :lead_id, :type, :reason, :date, :status)";
+                        $tblquery1 = "INSERT INTO tbl_leaders VALUES(:id, :assignBy, :user_id, :lead_id, :type, :reason, :date, :status)";
                         $tblvalue1 = array(
                             ':id' =>  NULL,
+                            ':assignBy' =>  $_SESSION['myId'],
                             ':user_id' =>  $id,
                             ':lead_id' => $_SESSION['view_church_id'],
                             ':type' => 'C',
@@ -41,6 +42,20 @@
                         );
                         $insert = $connect->tbl_insert($tblquery1, $tblvalue1);
                         if($insert){
+                            $tblquery1 = "INSERT INTO tbl_login VALUES(:id, :assignBy, :user_id, :email, :password, :church_id, :homecell_id, :level, :status, :date)";
+                            $tblvalue1 = array(
+                                ':id' =>  NULL,
+                                ':assignBy' =>  $_SESSION['myId'],
+                                ':user_id' =>  $id,
+                                ':email' => htmlspecialchars($email),
+                                ':password' => htmlspecialchars($password),
+                                ':church_id' => htmlspecialchars($church_id),
+                                ':homecell_id' => '',
+                                ':level' => 'C',
+                                ':status' => '1',
+                                ':date' => date("Y-m-d h:i")
+                            );
+                            $insert20 = $connect->tbl_insert($tblquery1, $tblvalue1);
                             $_SESSION['Message'] = 'Member has been assign';
                         }
                     }else{
@@ -175,6 +190,7 @@
                                                         <input type='hidden' name='id' value='$id'>
                                                         <input type='hidden' name='church_id' value='$church_id'>
                                                         <input type='hidden' name='email' value='$email'>
+                                                        <input type='hidden' name='password' value='$password'>
                                                         <a class='btn btn-danger btn-sm' onclick='popupBox()'>remove</a>
 
                                                         <div class='popup-main'>
@@ -190,7 +206,7 @@
                                                                         <div class='col-md-12'>
                                                                             <div class='form-group'>
                                                                                 <label class='mt-1'>Reason</label>
-                                                                                <textarea class='form-control textarea' name='reason'></textarea>
+                                                                                <textarea class='form-control textarea' name='reason' required></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
