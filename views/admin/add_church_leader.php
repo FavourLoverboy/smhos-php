@@ -1,48 +1,82 @@
 <?php
+    // Add
     $_SESSION['Message'] = '';
     if($_POST['assign']){
         extract($_POST);
         
-        $tblquery = "SELECT * FROM members WHERE email = :email AND church_id = :church_id";
+        $tblquery = "SELECT * FROM members WHERE email = :email";
         $tblvalue = array(
-            ':email' => htmlspecialchars($email),
-            ':church_id' => $_SESSION['view_church_id']
+            ':email' => htmlspecialchars($email)
         );
         $select = $connect->tbl_select($tblquery, $tblvalue);
         if($select){
-            foreach($select as $data){
-                extract($data);
-                $tblquery = "SELECT * FROM tbl_leaders WHERE user_id = :user_id AND lead_id = :lead_id AND type = :type AND status = :status";
-                $tblvalue = array(
-                    ':user_id' =>  $id,
-                    ':lead_id' => $_SESSION['view_church_id'],
-                    ':type' => 'C',
-                    ':status' => '1'
-                );
-                $select1 = $connect->tbl_select($tblquery, $tblvalue);
-                if(!$select1){
-                    $tblquery1 = "INSERT INTO tbl_leaders VALUES(:id, :user_id, :lead_id, :type, :reason, :date, :status)";
-                    $tblvalue1 = array(
-                        ':id' =>  NULL,
+
+            $tblquery = "SELECT * FROM members WHERE email = :email AND church_id = :church_id";
+            $tblvalue = array(
+                ':email' => htmlspecialchars($email),
+                ':church_id' => $_SESSION['view_church_id']
+            );
+            $select12 = $connect->tbl_select($tblquery, $tblvalue);
+            if($select12){
+                foreach($select12 as $data){
+                    extract($data);
+                    $tblquery = "SELECT * FROM tbl_leaders WHERE user_id = :user_id AND lead_id = :lead_id AND type = :type AND status = :status";
+                    $tblvalue = array(
                         ':user_id' =>  $id,
                         ':lead_id' => $_SESSION['view_church_id'],
                         ':type' => 'C',
-                        ':reason' => '',
-                        ':date' => date("Y-m-d h:i"),
                         ':status' => '1'
                     );
-                    $insert = $connect->tbl_insert($tblquery1, $tblvalue1);
-                    if($insert){
-                        $_SESSION['Message'] = 'Member has been assign';
+                    $select1 = $connect->tbl_select($tblquery, $tblvalue);
+                    if(!$select1){
+                        $tblquery1 = "INSERT INTO tbl_leaders VALUES(:id, :user_id, :lead_id, :type, :reason, :date, :status)";
+                        $tblvalue1 = array(
+                            ':id' =>  NULL,
+                            ':user_id' =>  $id,
+                            ':lead_id' => $_SESSION['view_church_id'],
+                            ':type' => 'C',
+                            ':reason' => '',
+                            ':date' => date("Y-m-d h:i"),
+                            ':status' => '1'
+                        );
+                        $insert = $connect->tbl_insert($tblquery1, $tblvalue1);
+                        if($insert){
+                            $_SESSION['Message'] = 'Member has been assign';
+                        }
+                    }else{
+                        $_SESSION['Message'] = 'Member is already a Church Leader';
                     }
-                }else{
-                    $_SESSION['Message'] = 'Member is already a Church Leader';
                 }
-            }
-            
+            }else{
+                $_SESSION['Message'] = 'User is not a member of the branch';
+            }            
         }else{
             $_SESSION['Message'] = 'Email don\'t exits';
         }
+    }
+
+    if($_POST['remove']){
+        extract($_POST);
+        $tblquery = "UPDATE tbl_leaders SET reason = :reason, status = '0' WHERE user_id = :user_id AND lead_id = :lead_id AND type = 'C'";
+        $tblvalue = array(
+            ':reason' => htmlspecialchars($reason),
+            ':user_id' => htmlspecialchars($id),
+            ':lead_id' => htmlspecialchars($church_id),
+        );
+        $update = $connect->tbl_update($tblquery, $tblvalue);
+        if($update){
+            extract($_POST);
+            $tblquery = "DELETE FROM tbl_login WHERE email = :email AND church_id = :church_id AND level = 'C'";
+            $tblvalue = array(
+                ':email' => htmlspecialchars($email),
+                ':church_id' => htmlspecialchars($church_id)
+            );
+            $delete = $connect->tbl_delete($tblquery, $tblvalue);
+            if($delete){
+                $_SESSION['Message'] = 'Member has been remove as church leader';
+            }
+        }
+
     }
 
 ?>
@@ -162,7 +196,7 @@
                                                                     </div>
                                                                     <div class='row mb-2'>
                                                                         <div class='update ml-auto mr-auto'>
-                                                                            <button class='btn btn-danger btn-sm'>remove</button>
+                                                                            <input type='submit' name='remove' class='btn btn-danger btn-sm' value='remove'>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -171,7 +205,7 @@
                                                     </form>
                                                 </td>
                                                 <td class='text-right'>
-                                                    <a href='/<%= page %>/view/<%= leader.id %>' class='btn btn-success btn-sm'>view</a>
+                                                    <a href='' class='btn btn-success btn-sm'>view</a>
                                                 </td>
                                             </tr>
                                         ";
