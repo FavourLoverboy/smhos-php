@@ -12,10 +12,10 @@
         $select = $connect->tbl_select($tblquery, $tblvalue);
         if($select){
 
-            $tblquery = "SELECT * FROM members WHERE email = :email AND church_id = :church_id";
+            $tblquery = "SELECT * FROM members WHERE email = :email AND homecell_id = :homecell_id";
             $tblvalue = array(
                 ':email' => htmlspecialchars($email),
-                ':church_id' => $_SESSION['view_church_id']
+                ':homecell_id' => $_SESSION['view_homecell_id']
             );
             $select12 = $connect->tbl_select($tblquery, $tblvalue);
             if($select12){
@@ -24,8 +24,8 @@
                     $tblquery = "SELECT * FROM tbl_leaders WHERE user_id = :user_id AND lead_id = :lead_id AND type = :type AND status = :status";
                     $tblvalue = array(
                         ':user_id' =>  $id,
-                        ':lead_id' => $_SESSION['view_church_id'],
-                        ':type' => 'C',
+                        ':lead_id' => $_SESSION['view_homecell_id'],
+                        ':type' => 'H',
                         ':status' => '1'
                     );
                     $select1 = $connect->tbl_select($tblquery, $tblvalue);
@@ -34,7 +34,7 @@
                         $tblquery = "SELECT * FROM tbl_leaders WHERE user_id = :user_id AND type = :type AND status = :status";
                         $tblvalue = array(
                             ':user_id' =>  $id,
-                            ':type' => 'H',
+                            ':type' => 'C',
                             ':status' => '1'
                         );
                         $select120 = $connect->tbl_select($tblquery, $tblvalue);
@@ -44,8 +44,8 @@
                                 ':id' =>  NULL,
                                 ':assignBy' =>  $_SESSION['myId'],
                                 ':user_id' =>  $id,
-                                ':lead_id' => $_SESSION['view_church_id'],
-                                ':type' => 'C',
+                                ':lead_id' => $_SESSION['view_homecell_id'],
+                                ':type' => 'H',
                                 ':reason' => '',
                                 ':date' => date("Y-m-d h:i"),
                                 ':status' => '1'
@@ -59,9 +59,9 @@
                                     ':user_id' =>  $id,
                                     ':email' => htmlspecialchars($email),
                                     ':password' => htmlspecialchars($password),
-                                    ':church_id' => htmlspecialchars($church_id),
-                                    ':homecell_id' => '',
-                                    ':level' => 'C',
+                                    ':church_id' => '',
+                                    ':homecell_id' => htmlspecialchars($homecell_id),
+                                    ':level' => 'H',
                                     ':status' => '1',
                                     ':date' => date("Y-m-d h:i")
                                 );
@@ -70,14 +70,14 @@
                                 $erremail = '';
                             }
                         }else{
-                            $_SESSION['Message'] = 'Member is already a Homecell Leader';
+                            $_SESSION['Message'] = 'Member is already a Church Leader';
                         }
                     }else{
-                        $_SESSION['Message'] = 'Member is already a Church Leader';
+                        $_SESSION['Message'] = 'Member is already a Homecell Leader';
                     }
                 }
             }else{
-                $_SESSION['Message'] = 'User is not a member of the branch';
+                $_SESSION['Message'] = 'User is not a member of the homecell';
             }            
         }else{
             $_SESSION['Message'] = 'Email don\'t exits';
@@ -86,23 +86,23 @@
 
     if($_POST['remove']){
         extract($_POST);
-        $tblquery = "UPDATE tbl_leaders SET reason = :reason, status = '0' WHERE user_id = :user_id AND lead_id = :lead_id AND type = 'C'";
+        $tblquery = "UPDATE tbl_leaders SET reason = :reason, status = '0' WHERE user_id = :user_id AND lead_id = :lead_id AND type = 'H'";
         $tblvalue = array(
             ':reason' => htmlspecialchars($reason),
             ':user_id' => htmlspecialchars($id),
-            ':lead_id' => htmlspecialchars($church_id),
+            ':lead_id' => htmlspecialchars($homecell_id),
         );
         $update = $connect->tbl_update($tblquery, $tblvalue);
         if($update){
             extract($_POST);
-            $tblquery = "DELETE FROM tbl_login WHERE email = :email AND church_id = :church_id AND level = 'C'";
+            $tblquery = "DELETE FROM tbl_login WHERE email = :email AND homecell_id = :homecell_id AND level = 'C'";
             $tblvalue = array(
                 ':email' => htmlspecialchars($email),
-                ':church_id' => htmlspecialchars($church_id)
+                ':homecell_id' => htmlspecialchars($homecell_id)
             );
             $delete = $connect->tbl_delete($tblquery, $tblvalue);
             if($delete){
-                $_SESSION['Message'] = 'Member has been remove as church leader';
+                $_SESSION['Message'] = 'Member has been remove as Homecell leader';
             }
         }
 
@@ -113,7 +113,7 @@
     <div class="col-md-12">
         <div class="card card-user">
             <div class="card-header">
-                <h5 class="card-title">Assign Church Leader</h5>
+                <h5 class="card-title">Assign Homecell Leader</h5>
                 <?php 
                     if($_SESSION['Message']){
                         echo "
@@ -135,9 +135,9 @@
                                 <datalist id="members">
                                     <?php
                                 
-                                        $tblquery = "SELECT * FROM members WHERE email != '' AND church_id = :church_id";
+                                        $tblquery = "SELECT * FROM members WHERE email != '' AND homecell_id = :homecell_id";
                                         $tblvalue = array(
-                                            ':church_id' => $_SESSION['view_church_id']
+                                            ':homecell_id' => $_SESSION['view_homecell_id']
                                         );
                                         $select = $connect->tbl_select($tblquery, $tblvalue);
                                         foreach($select as $data){
@@ -167,7 +167,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Church Leaders</h4>
+                <h4 class="card-title">Homecell Leaders</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -186,8 +186,8 @@
                             
                                 $tblquery = "SELECT members.id, members.last_name, members.first_name, members.other_name, members.email, tbl_leaders.date FROM members INNER JOIN tbl_leaders ON members.id = tbl_leaders.user_id WHERE tbl_leaders.lead_id = :lead_id AND tbl_leaders.type = :type AND tbl_leaders.status = :status";
                                 $tblvalue = array(
-                                    ':lead_id' => $_SESSION['view_church_id'],
-                                    ':type' => 'C',
+                                    ':lead_id' => $_SESSION['view_homecell_id'],
+                                    ':type' => 'H',
                                     ':status' => '1'
                                 );
                                 $select = $connect->tbl_select($tblquery, $tblvalue);
@@ -202,7 +202,7 @@
                                                 <td>
                                                     <form action='' method='post'>
                                                         <input type='hidden' name='id' value='$id'>
-                                                        <input type='hidden' name='church_id' value='$church_id'>
+                                                        <input type='hidden' name='homecell_id' value='$homecell_id'>
                                                         <input type='hidden' name='email' value='$email'>
                                                         <input type='hidden' name='password' value='$password'>
                                                         <a class='btn btn-danger btn-sm' onclick='popupBox()'>remove</a>
@@ -243,7 +243,7 @@
                                 }else{
                                     echo "
                                         <tr>
-                                            <td colspan='5'>There is no Leader for this church</td>
+                                            <td colspan='5'>There is no Leader for this homecell</td>
                                         </tr>
                                     ";
                                 }

@@ -320,14 +320,3 @@
         </div>
     </div>
 </div>
-
-<?php
-
-    if($_POST['view_homecell']){
-        extract($_POST);
-        $_SESSION['view_homecell_id'] = $homecell_id;
-        $_SESSION['view_homecell_name'] = $homecell_name;
-        echo "<script>  window.location='view_homecell' </script>";
-    }
-
-?>

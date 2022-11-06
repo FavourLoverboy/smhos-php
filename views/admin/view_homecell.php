@@ -239,7 +239,7 @@
                             <tr>
                                 <td colspan="3"></td>
                                 <td class="text-right">
-                                    <a href="/<%= page %>/add_homecell_leader/<%= homecells.id %>" class="btn btn-success btn-sm">add</a>
+                                <a href="add_homecell_leader" class='btn btn-success btn-sm'>add</a>
                                 </td>
                             </tr>
                         </tfoot>

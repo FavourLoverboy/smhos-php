@@ -1,3 +1,12 @@
+<?php
+    $_SESSION['Message'] = '';
+    if($_POST){
+        extract($_POST);
+        $_SESSION['view_church_id'] = $id;
+        $_SESSION['view_church_name'] = $name;
+        echo "<script>  window.location='view_church' </script>";
+    }
+?>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -76,13 +85,3 @@
         </div>
     </div>
 </div>
-
-<?php
-    $_SESSION['Message'] = '';
-    if($_POST){
-        extract($_POST);
-        $_SESSION['view_church_id'] = $id;
-        $_SESSION['view_church_name'] = $name;
-        echo "<script>  window.location='view_church' </script>";
-    }
-?>
