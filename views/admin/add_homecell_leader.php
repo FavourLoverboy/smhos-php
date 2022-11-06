@@ -95,7 +95,7 @@
         $update = $connect->tbl_update($tblquery, $tblvalue);
         if($update){
             extract($_POST);
-            $tblquery = "DELETE FROM tbl_login WHERE email = :email AND homecell_id = :homecell_id AND level = 'C'";
+            $tblquery = "DELETE FROM tbl_login WHERE email = :email AND homecell_id = :homecell_id AND level = 'H'";
             $tblvalue = array(
                 ':email' => htmlspecialchars($email),
                 ':homecell_id' => htmlspecialchars($homecell_id)

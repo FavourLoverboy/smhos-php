@@ -225,7 +225,7 @@
                                 }else{
                                     echo "
                                         <tr>
-                                            <td colspan='4'>There is no Homecell</td>
+                                            <td colspan='4'>There is no Homecell Leader</td>
                                         </tr>
                                     ";
                                 }                              
