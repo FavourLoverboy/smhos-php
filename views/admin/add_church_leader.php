@@ -235,7 +235,10 @@
                                                     </form>
                                                 </td>
                                                 <td class='text-right'>
-                                                    <a href='' class='btn btn-success btn-sm'>view</a>
+                                                    <form method='post'>
+                                                        <input type='hidden' name='member_id' value='$id'>
+                                                        <input type='submit' name='view' class='btn btn-success btn-sm' value='view'>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         ";
@@ -256,3 +259,12 @@
         </div>
     </div>
 </div>
+<?php 
+
+    if($_POST['view']){
+        extract($_POST);
+        $_SESSION['view_member_id'] = $member_id;
+        echo "<script>  window.location='view_member' </script>";
+    }
+
+?>
