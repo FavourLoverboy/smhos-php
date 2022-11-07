@@ -11,6 +11,14 @@
 
             <div class="card-header">
                 <h4 class="card-title">Members</h4>
+                <?php 
+                    if($_SESSION['Message']){
+                        echo "
+                            <label style='color: green;font-size:20px;'>$_SESSION[Message]</label>
+                        ";
+                    }
+                
+                ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -65,6 +73,7 @@
     </div>
 </div>
 <?php
+    $_SESSION['Message'] = '';
     if($_POST){
         extract($_POST);
         $_SESSION['view_member_id'] = $member_id;

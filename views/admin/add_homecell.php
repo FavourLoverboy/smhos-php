@@ -32,7 +32,7 @@
                         ':address' => htmlspecialchars(ucwords($address)),
                         ':date' => date("Y-m-d h:i")
                     );
-                    $insert =$connect->tbl_insert($tblquery, $tblvalue);
+                    $insert = $connect->tbl_insert($tblquery, $tblvalue);
                     if($insert){
                         $_SESSION['Message'] = 'Homecell has been added';
                         echo "<script>  window.location='homecells' </script>";
