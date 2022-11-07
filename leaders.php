@@ -37,7 +37,7 @@ $errMessage = "";
                     if($statusCheck){
                         foreach($statusCheck as $data){
                             extract($data);
-                            $_SESSION['myId'] = $id;
+                            $_SESSION['myId'] = $user_id;
                             $_SESSION['email'] = $email;
                             $_SESSION['level'] = $level;
     

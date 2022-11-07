@@ -22,3 +22,9 @@
         <p>Members</p>
     </a>
 </li>
+<li>
+    <a href="profile">
+        <i class="nc-icon nc-shop"></i>
+        <p>Profile</p>
+    </a>
+</li>
