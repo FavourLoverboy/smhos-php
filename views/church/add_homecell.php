@@ -14,33 +14,21 @@
         );
         $homecellName = $connect->tbl_select($tblquery, $tblvalue);
         if(!$homecellName){
-            $tblquery = "SELECT * FROM churches WHERE name = :name";
+            $tblquery = "INSERT INTO homecells VALUES(:id, :user_id, :church_id, :name, :address, :date)";
             $tblvalue = array(
-                ':name' => htmlspecialchars(ucwords($church))
+                ':id' => NULL,
+                ':user_id' => htmlspecialchars($_SESSION['myId']),
+                ':church_id' => htmlspecialchars($_SESSION['church_id']),
+                ':name' => htmlspecialchars(ucwords($name)),
+                ':address' => htmlspecialchars(ucwords($address)),
+                ':date' => date("Y-m-d h:i")
             );
-            $churchName = $connect->tbl_select($tblquery, $tblvalue);
-            if($churchName){
-                foreach($churchName as $data){
-                    extract($data);
-                    $tblquery = "INSERT INTO homecells VALUES(:id, :user_id, :church_id, :name, :address, :date)";
-                    $tblvalue = array(
-                        ':id' => NULL,
-                        ':user_id' => '1',
-                        ':church_id' => htmlspecialchars($id),
-                        ':name' => htmlspecialchars(ucwords($name)),
-                        ':address' => htmlspecialchars(ucwords($address)),
-                        ':date' => date("Y-m-d h:i")
-                    );
-                    $insert = $connect->tbl_insert($tblquery, $tblvalue);
-                    if($insert){
-                        $_SESSION['Message'] = 'Homecell has been added';
-                        echo "<script>  window.location='homecells' </script>";
-                    }
-                }
-            }else{
-                $_SESSION['Message'] = 'Church Branch don\'t exits';
-                echo "<script>  window.location='add_homecell' </script>";
+            $insert = $connect->tbl_insert($tblquery, $tblvalue);
+            if($insert){
+                $_SESSION['Message'] = 'Homecell has been added';
+                echo "<script>  window.location='homecells' </script>";
             }
+    
         }else{
             $_SESSION['Message'] = 'Homecell Name already exits';
             echo "<script>  window.location='add_homecell' </script>";
@@ -74,22 +62,21 @@
                         <div class="col-md-6 pr-3">
                             <div class="form-group">
                                 <label for="continent">Church</label>
-                                <input list="church" name="church" class="form-control" placeholder="Churches" value="<?php echo $_SESSION['church']; ?>" required>
-                                <datalist id="church">
-                                    <?php
+                                <?php
+                            
+                                    $tblquery = "SELECT name FROM churches WHERE id = :id";
+                                    $tblvalue = array(
+                                        ':id' => $_SESSION['church_id']
+                                    );
+                                    $select = $connect->tbl_select($tblquery, $tblvalue);
+                                    foreach($select as $data){
+                                        extract($data);
+                                        echo "
+                                            <input list='church' class='form-control' value='$name' readonly>
+                                        ";
+                                    }
                                 
-                                        $tblquery = "SELECT name FROM churches";
-                                        $tblvalue = array();
-                                        $select = $connect->tbl_select($tblquery, $tblvalue);
-                                        foreach($select as $data){
-                                            extract($data);
-                                            echo "
-                                                <option value='$name'>
-                                            ";
-                                        }
-                                    
-                                    ?>
-                                </datalist>
+                                ?>
                             </div>
                         </div>
                     </div>
