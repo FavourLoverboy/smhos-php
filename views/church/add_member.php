@@ -3,7 +3,6 @@
     if($_POST){
         extract($_POST);
         $homecell_id = '';
-        $church_id = '';
         $errC = '';
         $errH = '';
         $encryptPassword = $connect->epass('123');
@@ -27,23 +26,6 @@
             }else{
                 $_SESSION['Message'] = 'Homecell don\'t exits, ';
                 $errH = 'error';
-            }
-        }
-
-        if($church){
-            $tblquery = "SELECT id FROM churches WHERE name = :name";
-            $tblvalue = array(
-                ':name' => htmlspecialchars(ucwords($church))
-            );
-            $churchName = $connect->tbl_select($tblquery, $tblvalue);
-            if($churchName){
-                foreach($churchName as $data){
-                    extract($data);
-                    $church_id = $id;
-                }
-            }else{
-                $_SESSION['Message'] = 'Church don\'t exits, ';
-                $errC = 'error';
             }
         }
 
@@ -80,7 +62,7 @@
                     ':profile' => 'profile.png',
                     ':login' => '',
                     ':homecell_id' => $homecell_id,
-                    ':church_id' => $church_id,
+                    ':church_id' => $_SESSION['church_id'],
                     ':date' => date("Y-m-d h:i"),
                     ':status' => '1'
                 );
@@ -227,8 +209,10 @@
                                 <datalist id="homecell">
                                     <?php
                                 
-                                        $tblquery = "SELECT name FROM homecells";
-                                        $tblvalue = array();
+                                        $tblquery = "SELECT name FROM homecells WHERE church_id = :id";
+                                        $tblvalue = array(
+                                            ':id' => $_SESSION['church_id']
+                                        );
                                         $select = $connect->tbl_select($tblquery, $tblvalue);
                                         foreach($select as $data){
                                             extract($data);
@@ -244,22 +228,21 @@
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Church</label>
-                                <input list="church" class="form-control" name="church" placeholder="Church" value="<?php echo $_SESSION['church']; ?>">
-                                <datalist id="church">
-                                    <?php
+                                <?php
+                            
+                                    $tblquery = "SELECT name FROM churches WHERE id = :id";
+                                    $tblvalue = array(
+                                        ':id' => $_SESSION['church_id']
+                                    );
+                                    $select = $connect->tbl_select($tblquery, $tblvalue);
+                                    foreach($select as $data){
+                                        extract($data);
+                                        echo "
+                                            <input list='church' class='form-control' value='$name' readonly>
+                                        ";
+                                    }
                                 
-                                        $tblquery = "SELECT name FROM churches";
-                                        $tblvalue = array();
-                                        $select = $connect->tbl_select($tblquery, $tblvalue);
-                                        foreach($select as $data){
-                                            extract($data);
-                                            echo "
-                                                <option value='$name'>
-                                            ";
-                                        }
-                                    
-                                    ?>
-                                </datalist>
+                                ?>
                             </div>
                         </div>
                     </div>
