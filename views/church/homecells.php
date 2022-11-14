@@ -32,8 +32,10 @@
                         <tbody>
                             <?php
                                 
-                                $tblquery = "SELECT homecells.id, homecells.name, homecells.address, COUNT(members.id) AS members FROM homecells INNER JOIN members ON homecells.id = members.homecell_id GROUP BY members.homecell_id ORDER BY members";
-                                $tblvalue = array();
+                                $tblquery = "SELECT homecells.id, homecells.name, homecells.address, COUNT(members.id) AS members FROM homecells INNER JOIN members ON homecells.id = members.homecell_id WHERE homecells.church_id = :church_id GROUP BY members.homecell_id ORDER BY members";
+                                $tblvalue = array(
+                                    ':church_id' => $_SESSION['church_id']
+                                );
                                 $select = $connect->tbl_select($tblquery, $tblvalue);
                                 if($select){
                                     foreach($select as $data){
