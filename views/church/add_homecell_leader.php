@@ -263,6 +263,7 @@
 
     if($_POST['view']){
         extract($_POST);
+        
         $_SESSION['view_member_id'] = $member_id;
         echo "<script>  window.location='view_member' </script>";
     }
