@@ -1,5 +1,5 @@
 <?php 
-
+    $_SESSION['Message'] = '';
     $tblquery = "SELECT * FROM members WHERE id = :id";
     $tblvalue = array(
         ':id' => $_SESSION['myId']
@@ -336,6 +336,13 @@
                     }
                 
                 ?>
+                <div class="row">
+                    <div class="update ml-auto mr-auto">
+                        <a href="update_profile" class="btn btn-primary btn-round">
+                            Update Profile
+                        </a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

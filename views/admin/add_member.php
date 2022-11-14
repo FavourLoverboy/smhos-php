@@ -54,9 +54,10 @@
         $checkEmail = $connect->tbl_select($tblquery, $tblvalue);
         if(!$checkEmail){
             if(!($errC || $errH)){
-                $tblquery = "INSERT INTO members VALUES(:id, :last_name, :first_name, :other_name, :email, :number, :address, :baptise, :sex, :dob, :marital_status, :lga, :state, :country, :continent, :username, :password, :profile, :login, :homecell_id, :church_id, :date, :status)";
+                $tblquery = "INSERT INTO members VALUES(:id, :createdBy, :last_name, :first_name, :other_name, :email, :number, :address, :baptise, :sex, :dob, :marital_status, :lga, :state, :country, :continent, :username, :password, :profile, :login, :homecell_id, :church_id, :date, :status)";
                 $tblvalue = array(
                     ':id' => NULL,
+                    ':createdBy' => $_SESSION['myId'],
                     ':last_name' => htmlspecialchars(ucwords($lname)),
                     ':first_name' => htmlspecialchars(ucwords($fname)),
                     ':other_name' => htmlspecialchars(ucwords($other)),
