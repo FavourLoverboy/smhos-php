@@ -2,7 +2,7 @@
     $_SESSION['Message'] = '';
     $tblquery = "SELECT * FROM members WHERE id = :id";
     $tblvalue = array(
-        ':id' => $_SESSION['view_member_id']
+        ':id' => $_SESSION['myId']
     );
     $view = $connect->tbl_select($tblquery, $tblvalue);
     foreach($view as $data){
@@ -210,15 +210,15 @@
 <div class="col-md-8">
     <div class="card card-user">
         <div class="card-header">
-            <h5 class="card-title">Edit Profile</h5>
+            <h5 class="card-title">Profile</h5>
         </div>
         <div class="card-body">
-            <form>
+        <form>
                 <?php
                 
                     $tblquery = "SELECT * FROM members WHERE id = :id";
                     $tblvalue = array(
-                        ':id' => $_SESSION['view_member_id']
+                        ':id' => $_SESSION['myId']
                     );
                     $view = $connect->tbl_select($tblquery, $tblvalue);
                     foreach($view as $data){
@@ -336,6 +336,13 @@
                     }
                 
                 ?>
+                <div class="row">
+                    <div class="update ml-auto mr-auto">
+                        <a href="update_profile" class="btn btn-primary btn-round">
+                            Update Profile
+                        </a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
