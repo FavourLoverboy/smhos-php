@@ -41,6 +41,7 @@ $errMessage = "";
                             $_SESSION['email'] = $email;
                             $_SESSION['level'] = $level;
                             $_SESSION['church_id'] = $church_id;
+                            $_SESSION['homecell_id'] = $homecell_id;
     
                             if($_SESSION['level'] == 'A'){
                                 echo "<script>  window.location='admin/dashboard' </script>";

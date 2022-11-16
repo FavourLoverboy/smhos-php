@@ -1,11 +1,11 @@
 <li class="active ">
-    <a href="<?php echo $url[0]; ?>/dashboard">
+    <a href="dashboard">
         <i class="nc-icon nc-bank"></i>
         <p>Dashboard</p>
     </a>
 </li>
 <li>
-    <a href="<?php echo $url[0]; ?>/member">
+    <a href="members">
         <i class="nc-icon nc-shop"></i>
         <p>Members</p>
     </a>
