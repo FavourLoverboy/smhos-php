@@ -205,7 +205,7 @@
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label>Homecell</label>
-                                <input list="homecell" class="form-control" name="homecell" placeholder="Homecell" value="<?php echo $_SESSION['homecell']; ?>">
+                                <input list="homecell" class="form-control" name="homecell" placeholder="Homecell" value="<?php echo $_SESSION['homecell']; ?>" required>
                                 <datalist id="homecell">
                                     <?php
                                 

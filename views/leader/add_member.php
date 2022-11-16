@@ -225,7 +225,7 @@
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Church</label>
-                                <input list="church" class="form-control" name="church" placeholder="Church" value="<?php echo $_SESSION['church']; ?>">
+                                <input list="church" class="form-control" name="church" placeholder="Church" value="<?php echo $_SESSION['church']; ?>" required>
                                 <datalist id="church">
                                     <?php
                                     

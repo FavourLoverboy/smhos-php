@@ -223,7 +223,7 @@
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label>Homecell</label>
-                                <input list="homecell" class="form-control" name="homecell" placeholder="Homecell" value="<?php echo $_SESSION['homecell']; ?>">
+                                <input list="homecell" class="form-control" name="homecell" placeholder="Homecell" value="<?php echo $_SESSION['homecell']; ?>" required>
                                 <datalist id="homecell">
                                     <?php
                                 
@@ -244,7 +244,7 @@
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Church</label>
-                                <input list="church" class="form-control" name="church" placeholder="Church" value="<?php echo $_SESSION['church']; ?>">
+                                <input list="church" class="form-control" name="church" placeholder="Church" value="<?php echo $_SESSION['church']; ?>" required>
                                 <datalist id="church">
                                     <?php
                                 
