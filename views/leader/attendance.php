@@ -4,18 +4,16 @@
         extract($_POST);
 
         $tblquery = "INSERT INTO attendance VALUES(:id, :addedBy, :user, :c_id, :h_id, :theme_id, :date)";
+        $tblquery = "UPDATE attendance SET addedBy = :ad, h_id = :hi, date = :date WHERE user = :user AND theme_id = :theme_id";
         $tblvalue = array(
-            ':id' => NULL,
-            ':addedBy' => $_SESSION['myId'],
+            ':ad' => $_SESSION['myId'],
+            ':hi' => htmlspecialchars($homecell_id),
+            ':date' => date("Y-m-d h:i:s"),
             ':user' => htmlspecialchars($member_id),
-            ':c_id' => htmlspecialchars($church_id),
-            ':h_id' => htmlspecialchars($homecell_id),
-            ':theme_id' => htmlspecialchars($_SESSION['theme_id']),
-            ':date' => date("Y-m-d h:i:s")
+            ':theme_id' => htmlspecialchars($_SESSION['theme_id'])
         );
         $insert = $connect->tbl_insert($tblquery, $tblvalue);
         if($insert){
-            array_push($_SESSION['signedIn'], $member_id);
             $_SESSION['Message'] = "$member_name just sign in";
             echo "<script>  window.location='attendance' </script>";
         }
@@ -58,7 +56,7 @@
                         <tbody>
                             <?php
                                 
-                                $tblquery = "SELECT * FROM members WHERE homecell_id = :id";
+                                $tblquery = "SELECT attendance.user, members.id, members.last_name, members.first_name, members.other_name, members.homecell_id FROM attendance INNER JOIN members ON attendance.user = members.id WHERE members.homecell_id = :id AND attendance.h_id = ''";
                                 $tblvalue = array(
                                     ':id' => $_SESSION['homecell_id']
                                 );
@@ -66,27 +64,24 @@
                                 if($select){
                                     foreach($select as $data){
                                         extract($data);
-                                        if(!(in_array($id, $_SESSION['signedIn']))){
-                                            echo "
-                                                <tr>
-                                                    <td>$last_name $first_name $other_name</td>
-                                                    <td>
-                                                        <form method='post' action=''>
-                                                            <input type='hidden' name='member_id' value='$id'>
-                                                            <input type='hidden' name='member_name' value='$last_name $first_name $other_name'>
-                                                            <input type='hidden' name='church_id' value='$church_id'>
-                                                            <input type='hidden' name='homecell_id' value='$homecell_id'>
-                                                            <input type='submit' class='btn btn-success btn-sm' value='sign in'>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            ";
-                                        }
+                                        echo "
+                                            <tr>
+                                                <td>$last_name $first_name $other_name</td>
+                                                <td>
+                                                    <form method='post' action=''>
+                                                        <input type='hidden' name='member_id' value='$id'>
+                                                        <input type='hidden' name='member_name' value='$last_name $first_name $other_name'>
+                                                        <input type='hidden' name='homecell_id' value='$homecell_id'>
+                                                        <input type='submit' class='btn btn-success btn-sm' value='sign in'>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        ";
                                     }
                                 }else{
                                     echo "
                                         <tr>
-                                            <td colspan='6'>There is no Theme</td>
+                                            <td colspan='6'>No More request</td>
                                         </tr>
                                     ";
                                 }                              

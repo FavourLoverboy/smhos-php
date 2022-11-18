@@ -61,7 +61,7 @@
                                     ':password' => htmlspecialchars($password),
                                     ':church_id' => '',
                                     ':homecell_id' => htmlspecialchars($homecell_id),
-                                    ':level' => 'H',
+                                    ':level' => 'L',
                                     ':status' => '1',
                                     ':date' => date("Y-m-d h:i")
                                 );

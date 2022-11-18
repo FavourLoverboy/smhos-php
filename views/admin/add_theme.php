@@ -13,7 +13,6 @@
             if($select){
                 foreach($select as $data){
                     extract($data);
-                    echo 'hel';
                     $themeDate = substr($date, 0, 10);
                     $currentDate = date("Y-m-d");
                     if(!($themeDate == $currentDate)){
@@ -28,6 +27,7 @@
                         $insert = $connect->tbl_insert($tblquery, $tblvalue);
                         if($insert){
                             $_SESSION['Message'] = 'Theme has been added';
+                            $added = true;
                             echo "<script>  window.location='themes' </script>";
                         }
                     }else{
@@ -46,7 +46,37 @@
                 $insert = $connect->tbl_insert($tblquery, $tblvalue);
                 if($insert){
                     $_SESSION['Message'] = 'Theme has been added';
+                    $added = true;
                     echo "<script>  window.location='themes' </script>";
+                }
+            }
+
+            if($added){
+                $tblquery = "SELECT * FROM theme ORDER BY date DESC LIMIT 1";
+                $tblvalue = array();
+                $select = $connect->tbl_select($tblquery, $tblvalue);
+                foreach($select as $data){
+                    extract($data);
+                    echo 'this is the theme id ', $id;
+
+                    $tblquery = "SELECT id AS member_id, church_id AS c_id FROM members ORDER BY id";
+                    $tblvalue = array();
+                    $select = $connect->tbl_select($tblquery, $tblvalue);
+                    foreach($select as $data){
+                        extract($data);
+
+                        $tblquery = "INSERT INTO attendance VALUES(:id, :addedBy, :user, :c_id, :h_id, :theme_id, :date)";
+                        $tblvalue = array(
+                            ':id' => NULL,
+                            ':addedBy' => '',
+                            ':user' => $member_id,
+                            ':c_id' => $c_id,
+                            ':h_id' => '',
+                            ':theme_id' => htmlspecialchars($id),
+                            ':date' => ''
+                        );
+                        $insert = $connect->tbl_insert($tblquery, $tblvalue);
+                    }
                 }
             }
         }else{
