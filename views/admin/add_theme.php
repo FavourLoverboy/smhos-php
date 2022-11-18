@@ -28,7 +28,7 @@
                         $insert = $connect->tbl_insert($tblquery, $tblvalue);
                         if($insert){
                             $_SESSION['Message'] = 'Theme has been added';
-                            // echo "<script>  window.location='themes' </script>";
+                            echo "<script>  window.location='themes' </script>";
                         }
                     }else{
                         $_SESSION['Message'] = 'Theme has already been added for the week';
@@ -46,7 +46,7 @@
                 $insert = $connect->tbl_insert($tblquery, $tblvalue);
                 if($insert){
                     $_SESSION['Message'] = 'Theme has been added';
-                    // echo "<script>  window.location='themes' </script>";
+                    echo "<script>  window.location='themes' </script>";
                 }
             }
         }else{
