@@ -1,9 +1,9 @@
 <?php
     $_SESSION['Message'] = '';
-    if($_POST){
+    if($_POST['view_theme']){
         extract($_POST);
-        $_SESSION['view_member_id'] = $member_id;
-        echo "<script>  window.location='view_member' </script>";
+        $_SESSION['view_theme_id'] = $theme_id;
+        echo "<script>  window.location='view_theme_details' </script>";
     }
 ?>
 <div class="row">
@@ -50,7 +50,7 @@
                                     extract($data);
                                     $attendance = $attendance;
 
-                                    $tblquery = "SELECT theme.createdBy, theme.theme, theme.verse, theme.date, COUNT(attendance.user) AS members FROM theme INNER JOIN attendance ON theme.id = attendance.theme_id GROUP BY attendance.theme_id ORDER BY theme.id DESC";
+                                    $tblquery = "SELECT theme.id AS theme_id, theme.createdBy, theme.theme, theme.verse, theme.date, COUNT(attendance.user) AS members FROM theme INNER JOIN attendance ON theme.id = attendance.theme_id GROUP BY attendance.theme_id ORDER BY theme.id DESC";
                                     $tblvalue = array();
                                     $select = $connect->tbl_select($tblquery, $tblvalue);
                                     if($select){
@@ -74,8 +74,8 @@
                                                             <td>$date</td>
                                                             <td class='text-right'>
                                                                 <form method='post' action=''>
-                                                                    <input type='hidden' name='member_id' value='$id'>
-                                                                    <input type='submit' class='btn btn-success btn-sm' value='view'>
+                                                                    <input type='hidden' name='theme_id' value='$theme_id'>
+                                                                    <input type='submit' name='view_theme' class='btn btn-success btn-sm' value='view'>
                                                                 </form>
                                                             </td>
                                                         </tr>
