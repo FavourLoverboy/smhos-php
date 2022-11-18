@@ -5,6 +5,12 @@
     </a>
 </li>
 <li>
+    <a href="attendance">
+        <i class="nc-icon nc-shop"></i>
+        <p>Attendance</p>
+    </a>
+</li>
+<li>
     <a href="members">
         <i class="nc-icon nc-shop"></i>
         <p>Members</p>
