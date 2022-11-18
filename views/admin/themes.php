@@ -36,6 +36,7 @@
                             <th>Verse</th>
                             <th>Added By</th>
                             <th>Attendants</th>
+                            <th>Absenties</th>
                             <th>Members</th>
                             <th>Date</th>
                             <th>View</th>
@@ -64,12 +65,14 @@
                                             if($select2){
                                                 foreach($select2 as $data){
                                                     extract($data);
+                                                    $absent = $members - $attendance;
                                                     echo "
                                                         <tr>
                                                             <td>$theme</td>
                                                             <td>$verse</td>
                                                             <td>$last_name $first_name $other_name</td>
                                                             <td>$attendance</td>
+                                                            <td>$absent</td>
                                                             <td>$members</td>
                                                             <td>$date</td>
                                                             <td class='text-right'>

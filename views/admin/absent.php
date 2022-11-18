@@ -3,8 +3,8 @@
         <div class="card">
             <div class="row">
                 <div class="col-3">
-                    <a href="absent">
-                        <button type="button" class="btn btn-info ml-2">Absenties</button>
+                    <a href="view_theme_details">
+                        <button type="button" class="btn btn-info ml-2">Attendance</button>
                     </a>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                         $select = $connect->tbl_select($tblquery, $tblvalue);
                         foreach($select as $data){
                             extract($data);
-                            echo 'Theme: "' . $theme . '" Attendance';
+                            echo 'Theme: "' . $theme . '" Absenties';
                         }
                     
                     ?>
@@ -37,7 +37,7 @@
                         <tbody>
                             <?php
                                 
-                                $tblquery = "SELECT members.last_name, members.first_name, members.other_name, attendance.c_id, attendance.h_id, attendance.date FROM members INNER JOIN attendance ON members.id = attendance.user WHERE attendance.h_id != '' AND attendance.theme_id = :theme_id ORDER BY attendance.id";
+                                $tblquery = "SELECT members.last_name, members.first_name, members.other_name, members.homecell_id, attendance.c_id, attendance.date FROM members INNER JOIN attendance ON members.id = attendance.user WHERE attendance.h_id = '' AND attendance.theme_id = :theme_id ORDER BY attendance.id";
                                 $tblvalue = array(
                                     ':theme_id' => $_SESSION['view_theme_id']
                                 );
@@ -49,7 +49,7 @@
 
                                         $tblquery = "SELECT name FROM homecells WHERE id = :homecell";
                                         $tblvalue = array(
-                                            ':homecell' => $h_id
+                                            ':homecell' => $homecell_id
                                         );
                                         $selectHomecell = $connect->tbl_select($tblquery, $tblvalue);
                                         foreach($selectHomecell as $data){
