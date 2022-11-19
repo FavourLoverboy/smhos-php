@@ -39,6 +39,7 @@ $errMessage = "";
                             extract($data);
                             $_SESSION['myId'] = $user_id;
                             $_SESSION['email'] = $email;
+                            $_SESSION['password'] = $password;
                             $_SESSION['level'] = $level;
                             $_SESSION['church_id'] = $church_id;
                             $_SESSION['homecell_id'] = $homecell_id;
