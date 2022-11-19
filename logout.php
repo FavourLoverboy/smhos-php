@@ -1,6 +1,11 @@
 <?php
     // Logout
     session_start();
-    session_destroy();
-    header('location: login');
+    if($_SESSION['level']){
+        session_destroy();
+        header('location: leaders');
+    }else{
+        session_destroy();
+        header('location: leaders');
+    }
 ?>
