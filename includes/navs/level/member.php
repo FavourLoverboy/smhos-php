@@ -4,9 +4,3 @@
         <p>Dashboard</p>
     </a>
 </li>
-<li>
-    <a href="profile">
-        <i class="nc-icon nc-shop"></i>
-        <p>My Profile</p>
-    </a>
-</li>

@@ -34,7 +34,7 @@
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="profile">My Profile</a>
                         <a class="dropdown-item" href="photo">Profile Picture</a>
                         <a class="dropdown-item" href="change_password">Change Password</a>
                     </div>
