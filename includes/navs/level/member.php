@@ -4,3 +4,9 @@
         <p>Dashboard</p>
     </a>
 </li>
+<li>
+    <a href="followship">
+        <i class="nc-icon nc-shop"></i>
+        <p>Followship</p>
+    </a>
+</li>
