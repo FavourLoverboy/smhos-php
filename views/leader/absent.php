@@ -35,8 +35,8 @@
                         </thead>
                         <tbody>
                             <?php
-                                
-                                $tblquery = "SELECT members.last_name, members.first_name, members.other_name, members.homecell_id, attendance.c_id, attendance.date FROM members INNER JOIN attendance ON members.id = attendance.user WHERE attendance.h_id = '' AND attendance.theme_id = :theme_id AND attendance.h_id = :homecell_id ORDER BY attendance.id";
+                                echo $_SESSION['homecell_id'];
+                                $tblquery = "SELECT members.last_name, members.first_name, members.other_name, members.homecell_id, attendance.c_id, attendance.date FROM members INNER JOIN attendance ON members.id = attendance.user WHERE attendance.h_id = '' AND attendance.theme_id = :theme_id AND members.homecell_id = :homecell_id ORDER BY attendance.id";
                                 $tblvalue = array(
                                     ':theme_id' => $_SESSION['view_theme_id'],
                                     ':homecell_id' => $_SESSION['homecell_id']

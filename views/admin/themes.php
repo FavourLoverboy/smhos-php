@@ -44,55 +44,48 @@
                         <tbody>
                             <?php
                                 
-                                $tblquery = "SELECT COUNT(h_id) AS attendance FROM theme INNER JOIN attendance ON theme.id = attendance.theme_id WHERE h_id != '' GROUP BY attendance.theme_id ORDER BY theme.id DESC";
+                                $tblquery = "SELECT theme.id AS theme_id, theme.createdBy, theme.theme, theme.verse, theme.date, COUNT(attendance.user) AS members FROM theme INNER JOIN attendance ON theme.id = attendance.theme_id GROUP BY attendance.theme_id";
                                 $tblvalue = array();
                                 $select = $connect->tbl_select($tblquery, $tblvalue);
                                 foreach($select as $data){
                                     extract($data);
-                                    $attendance = $attendance;
 
-                                    $tblquery = "SELECT theme.id AS theme_id, theme.createdBy, theme.theme, theme.verse, theme.date, COUNT(attendance.user) AS members FROM theme INNER JOIN attendance ON theme.id = attendance.theme_id GROUP BY attendance.theme_id ORDER BY theme.id DESC";
-                                    $tblvalue = array();
-                                    $select = $connect->tbl_select($tblquery, $tblvalue);
-                                    if($select){
-                                        foreach($select as $data){
-                                            extract($data);
-                                            $tblquery = "SELECT last_name, first_name, other_name FROM members WHERE id = :id";
-                                            $tblvalue = array(
-                                                ':id' => $createdBy
-                                            );
-                                            $select2 = $connect->tbl_select($tblquery, $tblvalue);
-                                            if($select2){
-                                                foreach($select2 as $data){
-                                                    extract($data);
-                                                    $absent = $members - $attendance;
-                                                    echo "
-                                                        <tr>
-                                                            <td>$theme</td>
-                                                            <td>$verse</td>
-                                                            <td>$last_name $first_name $other_name</td>
-                                                            <td>$attendance</td>
-                                                            <td>$absent</td>
-                                                            <td>$members</td>
-                                                            <td>$date</td>
-                                                            <td class='text-right'>
-                                                                <form method='post' action=''>
-                                                                    <input type='hidden' name='theme_id' value='$theme_id'>
-                                                                    <input type='submit' name='view_theme' class='btn btn-success btn-sm' value='view'>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    ";
-                                                }
+                                    $tblquery = "SELECT COUNT(h_id) AS attendance FROM attendance WHERE theme_id = :theme_id AND h_id != ''";
+                                    $tblvalue = array(
+                                        ':theme_id' => $theme_id
+                                    );
+                                    $select12 = $connect->tbl_select($tblquery, $tblvalue);
+                                    foreach($select12 as $data){
+                                        extract($data);
+                                        $tblquery = "SELECT last_name, first_name, other_name FROM members WHERE id = :id";
+                                        $tblvalue = array(
+                                            ':id' => $createdBy
+                                        );
+                                        $select2 = $connect->tbl_select($tblquery, $tblvalue);
+                                        if($select2){
+                                            foreach($select2 as $data){
+                                                extract($data);
+                                                $absent = $members - $attendance;
+                                                echo "
+                                                    <tr>
+                                                        <td>$theme</td>
+                                                        <td>$verse</td>
+                                                        <td>$last_name $first_name $other_name</td>
+                                                        <td>$attendance</td>
+                                                        <td>$absent</td>
+                                                        <td>$members</td>
+                                                        <td>$date</td>
+                                                        <td class='text-right'>
+                                                            <form method='post' action=''>
+                                                                <input type='hidden' name='theme_id' value='$theme_id'>
+                                                                <input type='submit' name='view_theme' class='btn btn-success btn-sm' value='view'>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                ";
                                             }
                                         }
-                                    }else{
-                                        echo "
-                                            <tr>
-                                                <td colspan='6'>There is no Theme</td>
-                                            </tr>
-                                        ";
-                                    }    
+                                    }
                                 }
                             ?>
                         </tbody>

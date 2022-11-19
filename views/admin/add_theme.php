@@ -20,8 +20,8 @@
                         $tblvalue = array(
                             ':id' => NULL,
                             ':createdBy' => $_SESSION['myId'],
-                            ':theme' => htmlspecialchars(ucwords($theme)),
-                            ':verse' => htmlspecialchars(ucwords($verse)),
+                            ':theme' => htmlspecialchars(ucwords($new_theme)),
+                            ':verse' => htmlspecialchars(ucwords($new_verse)),
                             ':date' => date("Y-m-d h:i:s")
                         );
                         $insert = $connect->tbl_insert($tblquery, $tblvalue);
@@ -39,8 +39,8 @@
                 $tblvalue = array(
                     ':id' => NULL,
                     ':createdBy' => $_SESSION['myId'],
-                    ':theme' => htmlspecialchars(ucwords($theme)),
-                    ':verse' => htmlspecialchars(ucwords($verse)),
+                    ':theme' => htmlspecialchars(ucwords($new_theme)),
+                    ':verse' => htmlspecialchars(ucwords($new_verse)),
                     ':date' => date("Y-m-d h:i:s")
                 );
                 $insert = $connect->tbl_insert($tblquery, $tblvalue);
@@ -105,7 +105,7 @@
                         <div class="col-md-6 pl-3">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" name="theme" placeholder="enter theme name" value="<?php echo $_SESSION['theme']; ?>" required>
+                                <input type="text" class="form-control" name="new_theme" placeholder="enter theme name" value="<?php echo $_SESSION['theme']; ?>" required>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                         <div class="col-md-12 pl-3">
                             <div class="form-group">
                                 <label for="averse">Bible Verse</label>
-                                <textarea id="verse" name="verse" class="form-control" placeholder="enter bible verse" required><?php echo $_SESSION['verse']; ?></textarea>
+                                <textarea id="verse" name="new_verse" class="form-control" placeholder="enter bible verse" required><?php echo $_SESSION['verse']; ?></textarea>
                             </div>
                         </div>
                     </div>
