@@ -4,7 +4,7 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="/smhos-php/logout">Logout</a>
+                        <a href="/smhos-php/logout"></a>
                     </li>
                     <li>
                         <a href="" target="_blank"></a>

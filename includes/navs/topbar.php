@@ -37,6 +37,7 @@
                         <a class="dropdown-item" href="profile">My Profile</a>
                         <a class="dropdown-item" href="photo">Profile Picture</a>
                         <a class="dropdown-item" href="change_password">Change Password</a>
+                        <a class="dropdown-item" href="/smhos-php/logout">Logout</a>
                     </div>
                 </li>
                 <li class="nav-item">
