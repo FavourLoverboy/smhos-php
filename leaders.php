@@ -32,7 +32,6 @@ $errMessage = "";
                         ':email' => htmlspecialchars($email),
                         ':status' => '1'
                     );
-                    // print_r($tblvalue);
                     $statusCheck = $connect->tbl_select($tblquery, $tblvalue);
                     if($statusCheck){
                         foreach($statusCheck as $data){

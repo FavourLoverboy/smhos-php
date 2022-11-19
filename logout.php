@@ -6,6 +6,6 @@
         header('location: leaders');
     }else{
         session_destroy();
-        header('location: leaders');
+        header('location: login');
     }
 ?>

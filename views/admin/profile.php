@@ -1,4 +1,15 @@
-<?php 
+<?php
+
+    $tblquery = "SELECT profile FROM members WHERE id = :id";
+    $tblvalue = array(
+        ':id' => $_SESSION['myId']
+    );
+    $select = $connect->tbl_select($tblquery, $tblvalue);
+    foreach($select as $data){
+        extract($data);
+        $_SESSION['profilePicture'] = $profile;
+    }
+
     $_SESSION['Message'] = '';
     $tblquery = "SELECT * FROM members WHERE id = :id";
     $tblvalue = array(
@@ -25,7 +36,7 @@
             <div class="card-body">
                 <div class="author">
                     <a href="#">
-                        <img class="avatar border-gray" src="../assets/<?php echo $_SESSION['profile']; ?>" alt="...">
+                        <img class="avatar border-gray" src="../uploads/<?php echo $_SESSION['profile']; ?>" alt="...">
                         <h5 class="title"><?php echo $_SESSION['username']; ?></h5>
                     </a>
                     <p class="description"><?php echo $_SESSION['email']; ?></p>
