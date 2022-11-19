@@ -59,7 +59,6 @@
                                             echo "
                                                 <tr>
                                                     <td>$last_name $first_name $other_name</td>
-                                                    <td>$_SESSION[church_name]</td>
                                                     <td>$_SESSION[homecell_name]</td>
                                                     <td>$time</td>
                                                 </tr>
