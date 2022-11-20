@@ -97,12 +97,12 @@
                                         foreach($leader1 as $data){
                                             extract($data);
                                             echo "
-                                                <img src='../assets/$profile' alt='Circle Image' class='img-circle img-no-padding img-responsive'>
+                                                <img src='../uploads/$profile' alt='Circle Image' class='avatar border-gray'>
                                             ";
                                         }
                                     }else{
                                         echo "
-                                            <img src='' alt='Circle Image' class='img-circle img-no-padding img-responsive'>
+                                            <img src='../uploads/profile.png' alt='Circle Image' class='img-circle img-no-padding img-responsive'>
                                         ";
                                     }
                                 
@@ -141,7 +141,7 @@
                     <div class="row">
                         <div class="col-md-2 col-2">
                             <div class="avatar">
-                                <img src="../assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                <img src="../assets/home.jpg" alt="Circle Image" class="avatar border-gray">
                             </div>
                         </div>
                         <div class="col-md-7 col-7">
@@ -174,7 +174,7 @@
                     <div class="row">
                         <div class="col-md-2 col-2">
                             <div class="avatar">
-                                <img src="../assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                <img src="../assets/church.jpg" alt="Circle Image" class="avatar border-gray">
                             </div>
                         </div>
                         <div class="col-ms-7 col-7">
