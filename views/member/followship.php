@@ -47,7 +47,7 @@
                                                     <td>$verse</td>
                                                     <td>$name</td>
                                                     <td>$date</td>
-                                                    <td class='btn btn-success btn-sm'>attended</td>
+                                                    <td class='text-success btn-sm'>attended</td>
                                                 </tr>
                                             ";
                                         }
@@ -58,7 +58,7 @@
                                                 <td>$verse</td>
                                                 <td>no homecell</td>
                                                 <td>$date</td>
-                                                <td class='btn btn-danger btn-sm'>absent</td>
+                                                <td class='text-danger btn-sm'>absent</td>
                                             </tr>
                                         ";
                                     }

@@ -200,7 +200,7 @@
                                     <div class='col-md-6 pl-3'>
                                         <div class='form-group'>
                                             <label for='name'>Last Name</label>
-                                            <input type='text' class='form-control' name='lname' placeholder='enter last mame' value='$_SESSION[lname]' required>
+                                            <input type='text' class='form-control' name='lname' placeholder='enter last name' value='$_SESSION[lname]' required>
                                         </div>
                                     </div>
                                     <div class='col-md-6 pr-3'>
