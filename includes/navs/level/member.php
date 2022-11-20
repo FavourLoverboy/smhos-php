@@ -5,6 +5,12 @@
     </a>
 </li>
 <li>
+    <a href="changechurch">
+        <i class="nc-icon nc-shop"></i>
+        <p>Change Church</p>
+    </a>
+</li>
+<li>
     <a href="changehomecell">
         <i class="nc-icon nc-shop"></i>
         <p>Change Homecell</p>

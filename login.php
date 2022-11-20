@@ -42,6 +42,7 @@ $errMessage = "";
                             $_SESSION['username'] = $username;
                             $_SESSION['password'] = $password;
                             $_SESSION['homecell_id'] = $homecell_id;
+                            $_SESSION['church_id'] = $church_id;
     
                             echo "<script>  window.location='member/dashboard' </script>";
                         }
