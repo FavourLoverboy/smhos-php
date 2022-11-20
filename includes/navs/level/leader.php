@@ -17,6 +17,12 @@
     </a>
 </li>
 <li>
+    <a href="join_request">
+        <i class="nc-icon nc-shop"></i>
+        <p>Member Request</p>
+    </a>
+</li>
+<li>
     <a href="attendance">
         <i class="nc-icon nc-shop"></i>
         <p>Sign In</p>

@@ -1,3 +1,11 @@
+<?php
+    $_SESSION['Message'] = '';
+    if($_POST){
+        extract($_POST);
+        $_SESSION['view_member_id'] = $member_id;
+        echo "<script>  window.location='view_member' </script>";
+    }
+?>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -74,11 +82,3 @@
         </div>
     </div>
 </div>
-<?php
-    $_SESSION['Message'] = '';
-    if($_POST){
-        extract($_POST);
-        $_SESSION['view_member_id'] = $member_id;
-        echo "<script>  window.location='view_member' </script>";
-    }
-?>
