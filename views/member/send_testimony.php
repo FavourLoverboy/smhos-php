@@ -36,8 +36,8 @@
                     <div class="row">
                         <div class="col-md-12 pl-3">
                             <div class="form-group">
-                                <label for="tes">Testimony</label>
-                                <textarea id="tes" name="testimony" class="form-control" placeholder="write testimony" required></textarea>
+                                <!-- <label for="tes">Testimony</label> -->
+                                <textarea id="tes" name="testimony" class="form-control" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -51,3 +51,7 @@
         </div>
     </div>
 </div>
+<script src="../vendor/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('testimony');
+</script>
