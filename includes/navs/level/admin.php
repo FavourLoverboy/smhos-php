@@ -11,6 +11,12 @@
     </a>
 </li>
 <li>
+    <a href="complains">
+        <i class="nc-icon nc-shop"></i>
+        <p>Complains</p>
+    </a>
+</li>
+<li>
     <a href="homecells">
         <i class="nc-icon nc-shop"></i>
         <p>Homecells</p>
