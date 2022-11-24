@@ -19,7 +19,7 @@
                         <tbody>
                             <?php
                                 
-                                $tblquery = "SELECT members.last_name, members.first_name, members.other_name, members.email, members.number, members.sex, members.profile, testimonies.date FROM members INNER JOIN testimonies ON members.id = testimonies.user ORDER BY testimonies.id DESC";
+                                $tblquery = "SELECT members.last_name, members.first_name, members.other_name, members.email, members.number, members.sex, members.profile, testimonies.id as ids, testimonies.content, testimonies.date FROM members INNER JOIN testimonies ON members.id = testimonies.user ORDER BY testimonies.id DESC";
                                 $tblvalue = array();
                                 $select = $connect->tbl_select($tblquery, $tblvalue);
                                 if($select){
@@ -39,7 +39,10 @@
                                                 <td>$sex</td>
                                                 <td class='text-right'>
                                                     <form method='post' action=''>
-                                                        <input type='hidden' name='member_id' value='$id'>
+                                                        <input type='hidden' name='tes_id' value='$ids'>
+                                                        <input type='hidden' name='profile' value='$profile'>
+                                                        <input type='hidden' name='content' value='$content'>
+                                                        <input type='hidden' name='name' value='$last_name $first_name $other_name'>
                                                         <input type='submit' class='btn btn-success btn-sm' value='view'>
                                                     </form>
                                                 </td>
@@ -66,7 +69,10 @@
     $_SESSION['Message'] = '';
     if($_POST){
         extract($_POST);
-        $_SESSION['view_member_id'] = $member_id;
-        echo "<script>  window.location='view_member' </script>";
+        $_SESSION['view_tes_id'] = $tes_id;
+        $_SESSION['view_profile'] = $profile;
+        $_SESSION['view_name'] = $name;
+        $_SESSION['view_content'] = $content;
+        echo "<script>  window.location='view_testimony' </script>";
     }
 ?>
