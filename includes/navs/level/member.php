@@ -17,6 +17,12 @@
     </a>
 </li>
 <li>
+    <a href="complain">
+        <i class="nc-icon nc-shop"></i>
+        <p>Complain</p>
+    </a>
+</li>
+<li>
     <a href="followship">
         <i class="nc-icon nc-shop"></i>
         <p>Followship</p>
