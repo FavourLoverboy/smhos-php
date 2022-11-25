@@ -34,3 +34,9 @@
         <p>Send Testimony</p>
     </a>
 </li>
+<li>
+    <a href="testimonies">
+        <i class="nc-icon nc-shop"></i>
+        <p>Testimonies</p>
+    </a>
+</li>
