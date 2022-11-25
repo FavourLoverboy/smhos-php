@@ -34,7 +34,6 @@
                         </thead>
                         <tbody>
                             <?php
-                                echo $_SESSION['church_id'];
                                 $tblquery = "SELECT theme.id AS theme_id, theme.theme, theme.verse, theme.date, COUNT(attendance.user) AS members FROM theme INNER JOIN attendance ON theme.id = attendance.theme_id WHERE attendance.c_id = :church_id GROUP BY attendance.theme_id";
                                 $tblvalue = array(
                                     ':church_id' => $_SESSION['church_id'] 
