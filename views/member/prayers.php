@@ -1,13 +1,6 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="row">
-                <div class="col-3">
-                    <a href="prayers">
-                        <button type="button" class="btn btn-info ml-2">Add Prayer</button>
-                    </a>
-                </div>
-            </div>
             <div class="card-header">
                 <h4 class="card-title">Prayers</h4>
             </div>

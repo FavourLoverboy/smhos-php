@@ -35,6 +35,13 @@ $errMessage = "";
                     // print_r($tblvalue);
                     $statusCheck = $connect->tbl_select($tblquery, $tblvalue);
                     if($statusCheck){
+                        $tblquery = "UPDATE members SET login = :date WHERE email = :email";
+                        $tblvalue = array(
+                            ':date' => date("Y-m-d h:i:s"),
+                            ':email' => htmlspecialchars($email)
+                        );
+                        $update = $connect->tbl_update($tblquery, $tblvalue);
+
                         foreach($statusCheck as $data){
                             extract($data);
                             $_SESSION['myId'] = $id;
