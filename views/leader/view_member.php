@@ -133,7 +133,9 @@
                             <span class="text-muted"><small>Homecell Leader</small></span>
                         </div>
                         <div class="col-md-3 col-3 text-right">
-                            <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-header"></i></btn>
+                            <a href="profile">
+                                <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-header"></i></btn>
+                            </a>
                         </div>
                     </div>
                 </li>

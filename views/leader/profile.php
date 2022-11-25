@@ -12,7 +12,7 @@
         $_SESSION['username'] = $username;
         $_SESSION['profile'] = $profile;
         $_SESSION['church_id'] =$church_id;
-        $_SESSION['homecell_id'] = $homecell_id;
+        $_SESSION['my_homecell_id'] = $homecell_id;
     }
 
 ?>
@@ -88,7 +88,7 @@
                             
                                     $tblquery = "SELECT members.profile FROM members INNER JOIN tbl_leaders ON tbl_leaders.user_id = members.id WHERE tbl_leaders.lead_id = :id AND tbl_leaders.type = :type AND tbl_leaders.status = :status ORDER BY tbl_leaders.date LIMIT 1";
                                     $tblvalue = array(
-                                        ':id' => $_SESSION['homecell_id'],
+                                        ':id' => $_SESSION['my_homecell_id'],
                                         ':type' => 'H',
                                         ':status' => '1'
                                     );
@@ -114,7 +114,7 @@
                             
                                 $tblquery = "SELECT members.last_name, members.first_name FROM members INNER JOIN tbl_leaders ON tbl_leaders.user_id = members.id WHERE tbl_leaders.lead_id = :id AND tbl_leaders.type = :type AND tbl_leaders.status = :status ORDER BY tbl_leaders.date LIMIT 1";
                                 $tblvalue = array(
-                                    ':id' => $_SESSION['homecell_id'],
+                                    ':id' => $_SESSION['my_homecell_id'],
                                     ':type' => 'H',
                                     ':status' => '1'
                                 );
@@ -149,7 +149,7 @@
                             
                                 $tblquery = "SELECT * FROM homecells WHERE id = :id";
                                 $tblvalue = array(
-                                    ':id' => $_SESSION['homecell_id']
+                                    ':id' => $_SESSION['my_homecell_id']
                                 );
                                 $home = $connect->tbl_select($tblquery, $tblvalue);
                                 if($home){
