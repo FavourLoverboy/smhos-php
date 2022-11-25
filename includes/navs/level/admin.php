@@ -29,7 +29,7 @@
     </a>
 </li>
 <li>
-    <a href="prayers">
+    <a href="all_prayers">
         <i class="nc-icon nc-shop"></i>
         <p>Prayers</p>
     </a>
