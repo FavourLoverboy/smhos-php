@@ -133,7 +133,7 @@
                             <span class="text-muted"><small>Homecell Leader</small></span>
                         </div>
                         <div class="col-md-3 col-3 text-right">
-                            <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
+                            <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-header"></i></btn>
                         </div>
                     </div>
                 </li>
@@ -166,7 +166,9 @@
                             <span class="text-success"><small>Homecell</small></span>
                         </div>
                         <div class="col-md-3 col-3 text-right">
-                            <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
+                            <a href="member_attendance">
+                                <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-bar-chart"></i></btn>
+                            </a>
                         </div>
                     </div>
                 </li>
@@ -199,7 +201,7 @@
                             <span class="text-danger"><small>Branch</small></span>
                         </div>
                         <div class="col-md-3 col-3 text-right">
-                            <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
+                            <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-home"></i></btn>
                         </div>
                     </div>
                 </li>
