@@ -1,6 +1,6 @@
 <?php include('includes/authenticate/header.php');?>
 <?php 
-$errMessage = "";
+    $errMessage = "";
     if($_POST){
         extract($_POST);
         $encryptPassword = $connect->epass($password);
