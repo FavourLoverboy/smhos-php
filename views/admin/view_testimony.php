@@ -1,3 +1,21 @@
+<?php
+    $_SESSION['Message'] = '';
+    if($_POST['post']){
+        extract($_POST);
+
+        $tblquery = "UPDATE testimonies SET postBy = :postBy, status = :status WHERE id = :id";
+        $tblvalue = array(
+            ':postBy' => $_SESSION['myId'],
+            ':status' => '1',
+            ':id' => $_SESSION['view_tes_id']
+        );
+        $update = $connect->tbl_update($tblquery, $tblvalue);
+        if($update){
+            $_SESSION['Message'] = "Testimony has been post";
+        }
+    }
+?>
+
 <div class="row">
     <div class="col-md-12">
         <div class="card card-user">
@@ -6,7 +24,7 @@
                 <?php
                     if($_SESSION['Message']){
                         echo "
-                            <label style='color: red;font-size:20px;'>$_SESSION[Message]</label>
+                            <label style='color: green;font-size:20px;'>$_SESSION[Message]</label>
                         ";
                     }
                 ?>
@@ -20,6 +38,11 @@
                     </div>
                     <div class="col-md-12 pl-3">
                         <?php echo $_SESSION['view_content']; ?>
+                    </div>
+                    <div class="col-md-12 pl-3">
+                        <form method="POST" action="">
+                            <input type="submit" name="post" class="btn btn-primary btn-round" value="post">
+                        </form>
                     </div>
                 </div>
             </div>

@@ -2,12 +2,14 @@
 
     if($_POST['send']){
         extract($_POST);
-        $tblquery = "INSERT INTO testimonies VALUES(:id, :user, :content, :date)";
+        $tblquery = "INSERT INTO testimonies VALUES(:id, :postBy, :user, :content, :date, :status)";
         $tblvalue = array(
             ':id' => NULL,
+            ':postBy' => '',
             ':user' => $_SESSION['myId'],
             ':content' => htmlspecialchars($testimony),
-            ':date' => date("Y-m-d h:i:s")
+            ':date' => date("Y-m-d h:i:s"),
+            ':status' => '0'
         );
         $insert = $connect->tbl_insert($tblquery, $tblvalue);
         if($insert){

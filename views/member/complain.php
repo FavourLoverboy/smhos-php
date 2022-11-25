@@ -1,5 +1,4 @@
 <?php
-
     if($_POST['send']){
         extract($_POST);
         $tblquery = "INSERT INTO complain VALUES(:id, :user, :content, :date)";
