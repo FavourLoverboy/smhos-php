@@ -1,6 +1,13 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
+            <div class="row">
+                <div class="col-3">
+                    <a href="prayers">
+                        <button type="button" class="btn btn-info ml-2">Add Prayer</button>
+                    </a>
+                </div>
+            </div>
             <div class="card-header">
                 <h4 class="card-title">Prayers</h4>
             </div>
@@ -29,6 +36,8 @@
                                                 <td>$theme</td>
                                                 <td class='text-right'>
                                                     <form method='post' action=''>
+                                                        <input type='hidden' name='id' value='$ids'>
+                                                        <input type='hidden' name='theme' value='$theme'>
                                                         <input type='hidden' name='content' value='$content'>
                                                         <input type='submit' class='btn btn-success btn-sm' value='view'>
                                                     </form>
@@ -57,6 +66,7 @@
     $_SESSION['Message'] = '';
     if($_POST){
         extract($_POST);
+        $_SESSION['view_theme'] = $theme;
         $_SESSION['view_content'] = $content;
         echo "<script>  window.location='view_prayer' </script>";
     }
