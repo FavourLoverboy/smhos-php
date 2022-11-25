@@ -66,6 +66,7 @@
     $_SESSION['Message'] = '';
     if($_POST){
         extract($_POST);
+        $_SESSION['view_id'] = $id;
         $_SESSION['view_theme'] = $theme;
         $_SESSION['view_content'] = $content;
         echo "<script>  window.location='view_prayer' </script>";

@@ -1,17 +1,14 @@
 <?php
-    $_SESSION['Message'] = '';
     if($_POST['delete']){
         extract($_POST);
 
-        $tblquery = "UPDATE testimonies SET postBy = :postBy, status = :status WHERE id = :id";
+        $tblquery = "DELETE FROM prayers WHERE id = :id";
         $tblvalue = array(
-            ':postBy' => $_SESSION['myId'],
-            ':status' => '1',
-            ':id' => $_SESSION['view_tes_id']
+            ':id' => $_SESSION['view_id']
         );
         $update = $connect->tbl_update($tblquery, $tblvalue);
         if($update){
-            $_SESSION['Message'] = "Testimony has been post";
+            echo "<script>  window.location='all_prayers' </script>";
         }
     }
 ?>
@@ -21,13 +18,6 @@
         <div class="card card-user">
             <div class="card-header">
                 <h5 class="card-title"><?php echo$_SESSION['view_theme']; ?></h5>
-                <?php
-                    if($_SESSION['Message']){
-                        echo "
-                            <label style='color: green;font-size:20px;'>$_SESSION[Message]</label>
-                        ";
-                    }
-                ?>
             </div>
             <div class="card-body">
                 <div class="row">
