@@ -52,7 +52,7 @@
                                 }else{
                                     echo "
                                         <tr>
-                                            <td colspan='6'>There is no Member</td>
+                                            <td colspan='6'>There is no Testimony</td>
                                         </tr>
                                     ";
                                 }                              

@@ -14,6 +14,21 @@
             $_SESSION['Message'] = "Testimony has been post";
         }
     }
+
+    if($_POST['unpost']){
+        extract($_POST);
+
+        $tblquery = "UPDATE testimonies SET postBy = :postBy, status = :status WHERE id = :id";
+        $tblvalue = array(
+            ':postBy' => $_SESSION['myId'],
+            ':status' => '0',
+            ':id' => $_SESSION['view_tes_id']
+        );
+        $update = $connect->tbl_update($tblquery, $tblvalue);
+        if($update){
+            $_SESSION['Message'] = "Testimony has been unposted";
+        }
+    }
 ?>
 
 <div class="row">
@@ -40,9 +55,23 @@
                         <?php echo $_SESSION['view_content']; ?>
                     </div>
                     <div class="col-md-12 pl-3">
-                        <form method="POST" action="">
-                            <input type="submit" name="post" class="btn btn-primary btn-round" value="post">
-                        </form>
+                        <?php 
+
+                            if($_SESSION['view_status'] == '1'){
+                                echo "
+                                    <form method='POST' action=''>
+                                        <input type='submit' name='unpost' class='btn btn-danger btn-round' value='unpost'>
+                                    </form>
+                                ";
+                            }else{
+                                echo "
+                                    <form method='POST' action=''>
+                                        <input type='submit' name='post' class='btn btn-primary btn-round' value='post'>
+                                    </form>
+                                ";
+                            }
+                        
+                        ?>
                     </div>
                 </div>
             </div>

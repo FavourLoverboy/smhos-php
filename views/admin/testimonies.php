@@ -43,6 +43,7 @@
                                                             <input type='hidden' name='tes_id' value='$ids'>
                                                             <input type='hidden' name='profile' value='$profile'>
                                                             <input type='hidden' name='content' value='$content'>
+                                                            <input type='hidden' name='status' value='$status'>
                                                             <input type='hidden' name='name' value='$last_name $first_name $other_name'>
                                                             <input type='submit' class='btn btn-success btn-sm' value='view'>
                                                         </form>
@@ -67,6 +68,7 @@
                                                             <input type='hidden' name='tes_id' value='$ids'>
                                                             <input type='hidden' name='profile' value='$profile'>
                                                             <input type='hidden' name='content' value='$content'>
+                                                            <input type='hidden' name='status' value='$status'>
                                                             <input type='hidden' name='name' value='$last_name $first_name $other_name'>
                                                             <input type='submit' class='btn btn-danger btn-sm' value='view'>
                                                         </form>
@@ -79,7 +81,7 @@
                                 }else{
                                     echo "
                                         <tr>
-                                            <td colspan='6'>There is no Member</td>
+                                            <td colspan='6'>There is no Testimony</td>
                                         </tr>
                                     ";
                                 }                              
@@ -100,6 +102,7 @@
         $_SESSION['view_profile'] = $profile;
         $_SESSION['view_name'] = $name;
         $_SESSION['view_content'] = $content;
+        $_SESSION['view_status'] = $status;
         echo "<script>  window.location='view_testimony' </script>";
     }
 ?>
