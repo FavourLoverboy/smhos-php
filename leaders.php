@@ -64,6 +64,16 @@ $errMessage = "";
             $errMessage = 'invalid email';
         }
     }
+
+    $tblquery = "SELECT profile FROM members WHERE id = :id";
+    $tblvalue = array(
+        ':id' => $_SESSION['myId']
+    );
+    $select = $connect->tbl_select($tblquery, $tblvalue);
+    foreach($select as $data){
+        extract($data);
+        $_SESSION['profile'] = $profile;
+    }
 ?>
     <div class="row">
         <div class="col-lg-6 d-none d-lg-block bg-login-image2"></div>

@@ -50,6 +50,7 @@
                             $_SESSION['password'] = $password;
                             $_SESSION['homecell_id'] = $homecell_id;
                             $_SESSION['church_id'] = $church_id;
+                            $_SESSION['profile'] = $profile;
     
                             echo "<script>  window.location='member/dashboard' </script>";
                         }

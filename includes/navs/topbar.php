@@ -20,7 +20,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link btn-magnify" href="javascript:;">
-                        <i class="nc-icon nc-layout-11"></i>
+                        <!-- <i class="nc-icon nc-layout-11"></i> -->
                         <p>
                             <span class="d-lg-none d-md-block">Stats</span>
                         </p>
@@ -28,7 +28,7 @@
                 </li>
                 <li class="nav-item btn-rotate dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="nc-icon nc-bell-55"></i>
+                        <i class="fa fa-cog"></i>
                         <p>
                             <span class="d-lg-none d-md-block">Some Actions</span>
                         </p>
@@ -41,11 +41,14 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <img src="../uploads/<?php echo $_SESSION['profile']; ?>" alt="Circle Image" width="25px" height="25px" class="avatar border-gray" style="border-radius: 50%;margin-top: 15px;">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn-rotate" href="javascript:;">
-                        <i class="nc-icon nc-settings-gear-65"></i>
-                        <p>
+                        <!-- <i class="nc-icon nc-settings-gear-65"></i> -->
+                        <!-- <p>
                             <span class="d-lg-none d-md-block">Account</span>
-                        </p>
+                        </p> -->
                     </a>
                 </li>
             </ul>
