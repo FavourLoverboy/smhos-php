@@ -1,10 +1,11 @@
 <?php
     if($_POST['send']){
         extract($_POST);
-        $tblquery = "INSERT INTO material VALUES(:id, :user, :content, :date)";
+        $tblquery = "INSERT INTO material VALUES(:id, :user, :topic, :content, :date)";
         $tblvalue = array(
             ':id' => NULL,
             ':user' => $_SESSION['myId'],
+            ':topic' => htmlspecialchars(ucwords($topic)),
             ':content' => htmlspecialchars($content),
             ':date' => date("Y-m-d h:i:s")
         );
@@ -33,6 +34,11 @@
             <div class="card-body">
                 <form action="" method="post">
                     <div class="row">
+                        <div class="col-md-12 pl-3">
+                            <div class="form-group">
+                                <input type="text" name="topic" class="form-control" placeholder="enter Topic" required>
+                            </div>
+                        </div>
                         <div class="col-md-12 pl-3">
                             <div class="form-group">
                                 <textarea id="tes" name="content" class="form-control" required></textarea>
