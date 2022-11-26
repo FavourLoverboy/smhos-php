@@ -23,6 +23,12 @@
     </a>
 </li>
 <li>
+    <a href="homecell_materials">
+        <i class="fa fa-home"></i>
+        <p>Homecell Materials</p>
+    </a>
+</li>
+<li>
     <a href="members">
         <i class="fa fa-users"></i>
         <p>Members</p>
@@ -43,6 +49,6 @@
 <li>
     <a href="themes">
         <i class="fa fa-book"></i>
-        <p>Themes</p>
+        <p>Homecell Themes</p>
     </a>
 </li>
