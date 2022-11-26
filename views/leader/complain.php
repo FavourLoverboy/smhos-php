@@ -6,7 +6,7 @@
             ':id' => NULL,
             ':user' => $_SESSION['myId'],
             ':content' => htmlspecialchars($content),
-            ':tag' => 'M',
+            ':tag' => 'H',
             ':date' => date("Y-m-d h:i:s")
         );
         $insert = $connect->tbl_insert($tblquery, $tblvalue);

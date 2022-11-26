@@ -11,6 +11,12 @@
     </a>
 </li>
 <li>
+    <a href="complain">
+        <i class="fa fa-comments"></i>
+        <p>Complain</p>
+    </a>
+</li>
+<li>
     <a href="homecell_materials">
         <i class="fa fa-users"></i>
         <p>Homecell Materials</p>
