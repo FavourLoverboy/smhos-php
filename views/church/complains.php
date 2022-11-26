@@ -19,7 +19,7 @@
                         <tbody>
                             <?php
                                 
-                                $tblquery = "SELECT members.last_name, members.first_name, members.other_name, members.email, members.number, members.sex, members.profile, complain.id as ids, complain.content, complain.date FROM members INNER JOIN complain ON members.id = complain.user WHERE members.church_id = :c_id ORDER BY complain.id DESC";
+                                $tblquery = "SELECT members.last_name, members.first_name, members.other_name, members.email, members.number, members.sex, members.profile, complain.id as ids, complain.content, complain.tag, complain.date FROM members INNER JOIN complain ON members.id = complain.user WHERE members.church_id = :c_id ORDER BY complain.id DESC";
                                 $tblvalue = array(
                                     'c_id' => $_SESSION['church_id']
                                 );
@@ -27,29 +27,55 @@
                                 if($select){
                                     foreach($select as $data){
                                         extract($data);
-                                        echo "
-                                            <tr>
-                                                <td>$date</td>
-                                                <td>$last_name $first_name</td>
-                                                <td>
-                                                    <div class='avatar'>
-                                                        <img src='../uploads/$profile' alt='Circle Image' class='avatar border-gray'>
-                                                    </div>
-                                                </td>
-                                                <td>$email</td>
-                                                <td>$number</td>
-                                                <td>$sex</td>
-                                                <td class='text-right'>
-                                                    <form method='post' action=''>
-                                                        <input type='hidden' name='tes_id' value='$ids'>
-                                                        <input type='hidden' name='profile' value='$profile'>
-                                                        <input type='hidden' name='content' value='$content'>
-                                                        <input type='hidden' name='name' value='$last_name $first_name $other_name'>
-                                                        <input type='submit' class='btn btn-success btn-sm' value='view'>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        ";
+                                        if($tag){
+                                            echo "
+                                                <tr>
+                                                    <td>$date</td>
+                                                    <td>$last_name $first_name</td>
+                                                    <td>
+                                                        <div class='avatar'>
+                                                            <img src='../uploads/$profile' alt='Circle Image' class='avatar border-gray'>
+                                                        </div>
+                                                    </td>
+                                                    <td>$email</td>
+                                                    <td>$number</td>
+                                                    <td>$sex</td>
+                                                    <td class='text-right'>
+                                                        <form method='post' action=''>
+                                                            <input type='hidden' name='tes_id' value='$ids'>
+                                                            <input type='hidden' name='profile' value='$profile'>
+                                                            <input type='hidden' name='content' value='$content'>
+                                                            <input type='hidden' name='name' value='$last_name $first_name $other_name'>
+                                                            <input type='submit' class='btn btn-primay btn-sm' value='view'>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            ";
+                                        }else{
+                                            echo "
+                                                <tr>
+                                                    <td>$date</td>
+                                                    <td>$last_name $first_name</td>
+                                                    <td>
+                                                        <div class='avatar'>
+                                                            <img src='../uploads/$profile' alt='Circle Image' class='avatar border-gray'>
+                                                        </div>
+                                                    </td>
+                                                    <td>$email</td>
+                                                    <td>$number</td>
+                                                    <td>$sex</td>
+                                                    <td class='text-right'>
+                                                        <form method='post' action=''>
+                                                            <input type='hidden' name='tes_id' value='$ids'>
+                                                            <input type='hidden' name='profile' value='$profile'>
+                                                            <input type='hidden' name='content' value='$content'>
+                                                            <input type='hidden' name='name' value='$last_name $first_name $other_name'>
+                                                            <input type='submit' class='btn btn-success btn-sm' value='view'>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            ";
+                                        }
                                     }
                                 }else{
                                     echo "
