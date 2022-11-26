@@ -69,6 +69,6 @@
         $_SESSION['view_id'] = $id;
         $_SESSION['view_topic'] = $topic;
         $_SESSION['view_content'] = $content;
-        echo "<script>  window.location='view_prayer' </script>";
+        echo "<script>  window.location='view_homecell_material' </script>";
     }
 ?>
