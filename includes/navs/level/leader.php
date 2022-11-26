@@ -11,6 +11,12 @@
     </a>
 </li>
 <li>
+    <a href="homecell_materials">
+        <i class="fa fa-users"></i>
+        <p>Homecell Materials</p>
+    </a>
+</li>
+<li>
     <a href="members">
         <i class="fa fa-users"></i>
         <p>Members</p>
