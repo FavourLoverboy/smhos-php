@@ -8,7 +8,7 @@
         );
         $update = $connect->tbl_update($tblquery, $tblvalue);
         if($update){
-            echo "<script>  window.location='all_prayers' </script>";
+            echo "<script>  window.location='homecell_materials' </script>";
         }
     }
 ?>
