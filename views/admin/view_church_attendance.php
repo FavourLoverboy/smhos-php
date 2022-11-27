@@ -1,9 +1,8 @@
 <?php
-    $_SESSION['Message'] = '';
     if($_POST['view_theme']){
         extract($_POST);
         $_SESSION['view_theme_id'] = $theme_id;
-        echo "<script>  window.location='view_theme_details' </script>";
+        echo "<script>  window.location='view_church_attendance_details' </script>";
     }
 ?>
 <div class="row">
