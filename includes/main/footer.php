@@ -4,6 +4,8 @@
         <script src="../js/core/popper.min.js"></script>
         <script src="../js/core/bootstrap.min.js"></script>
         <script src="../js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
         <!-- DataTable -->
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.js"></script>

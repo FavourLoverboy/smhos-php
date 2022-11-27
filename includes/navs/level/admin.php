@@ -5,6 +5,12 @@
     </a>
 </li>
 <li>
+    <a href="attendance">
+        <i class="fa fa-university"></i>
+        <p>Attendance</p>
+    </a>
+</li>
+<li>
     <a href="churches">
         <i class="fa fa-university"></i>
         <p>Churches</p>
