@@ -5,6 +5,12 @@
     </a>
 </li>
 <li>
+    <a href="all_attendance">
+        <i class="fa fa-bar-chart"></i>
+        <p>All Attendance</p>
+    </a>
+</li>
+<li>
     <a href="attendance">
         <i class="fa fa-bar-chart"></i>
         <p>Attendance</p>
