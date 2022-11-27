@@ -29,6 +29,12 @@
     </a>
 </li>
 <li>
+    <a href="members_attendance">
+        <i class="fa fa-users"></i>
+        <p>Members Attendance</p>
+    </a>
+</li>
+<li>
     <a href="join_request">
         <i class="fa fa-question-circle"></i>
         <p>Member Request</p>
