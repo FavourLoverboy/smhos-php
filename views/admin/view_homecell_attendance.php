@@ -3,14 +3,14 @@
     if($_POST['view_theme']){
         extract($_POST);
         $_SESSION['view_theme_id'] = $theme_id;
-        echo "<script>  window.location='view_theme_details' </script>";
+        echo "<script>  window.location='view_homecell_attendance_details' </script>";
     }
 ?>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title"><?php echo $_SESSION['view_homecell_att_name'] . ' Themes'; ?></h4>
+                <h4 class="card-title"><?php echo $_SESSION['view_homecell_att_name']; ?></h4>
                 <?php 
                     if($_SESSION['Message']){
                         echo "
