@@ -44,40 +44,59 @@
                                 <table class="table">
                                     <thead class=" text-primary">
                                         <th>Name</th>
-                                        <th>LGA</th>
-                                        <th>Country</th>
+                                        <th>email</th>
+                                        <th>Church</th>
+                                        <th>Homecell</th>
                                         <th>View</th>
                                     </thead>
                                     <tbody>
                                         <?php
                                         
-                                            $tblquery = "SELECT * FROM churches ORDER BY name";
+                                            $tblquery = "SELECT members.id AS m_id, members.last_name, members.first_name, members.other_name, members.email, members.church_id AS c_id, members.homecell_id AS h_id FROM members INNER JOIN tbl_login ON members.id = tbl_login.user_id WHERE level = 'A'";
                                             $tblvalue = array();
                                             $select =$connect->tbl_select($tblquery, $tblvalue);
                                             if($select){
                                                 foreach($select as $data){
                                                     extract($data);
-                                                    ?>
-                                                    <?php
-                                                        echo "
-                                                            <tr>
-                                                                <td>$name</td>
-                                                                <td>$lga</td>
-                                                                <td>$country</td>
-                                                                <td>
-                                                                    <form action='' method='POST'>
-                                                                        <input type='hidden' name='church_id' value='$id'>
-                                                                        <input type='hidden' name='church_name' value='$name'>
-                                                                        <input type='submit' name='view_church' class='btn btn-info' value='view'>
-                                                                    </form>
-                                                                </td>
-                                                            </tr>
-                                                        ";
+
+                                                    $tblquery = "SELECT name AS c_name FROM churches WHERE id = $c_id";
+                                                    $tblvalue = array();
+                                                    $select1 =$connect->tbl_select($tblquery, $tblvalue);
+                                                    if($select1){
+                                                        foreach($select1 as $data){
+                                                            extract($data);
+                                                            
+                                                            $tblquery = "SELECT name AS h_name FROM homecells WHERE id = $h_id";
+                                                            $tblvalue = array();
+                                                            $select1 =$connect->tbl_select($tblquery, $tblvalue);
+                                                            if($select1){
+                                                                foreach($select1 as $data){
+                                                                    extract($data);
+                                                                    ?>
+                                                                    <?php
+                                                                        echo "
+                                                                            <tr>
+                                                                                <td>$last_name $first_name $other_name</td>
+                                                                                <td>$email</td>
+                                                                                <td>$c_name</td>
+                                                                                <td>$h_name</td>
+                                                                                <td>
+                                                                                    <form action='' method='POST'>
+                                                                                        <input type='hidden' name='member_id' value='$m_id'>
+                                                                                        <input type='submit' name='view' class='btn btn-info' value='view'>
+                                                                                    </form>
+                                                                                </td>
+                                                                            </tr>
+                                                                        ";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }else{
                                                 echo "
                                                     <tr>
-                                                        <td colspan='6'>There is no Church</td>
+                                                        <td colspan='6'>There is no Admin</td>
                                                     </tr>
                                                 ";
                                             }
@@ -218,24 +237,9 @@
 </div>
 
 <?php
-    if($_POST['view_church']){
+    if($_POST['view']){
         extract($_POST);
-        $_SESSION['view_church_att_id'] = $church_id;
-        $_SESSION['view_church_att_name'] = $church_name;
-        echo "<script>  window.location='view_church_attendance' </script>";
-    }
-
-    if($_POST['view_homecell']){
-        extract($_POST);
-        $_SESSION['view_homecell_att_id'] = $homecell_id;
-        $_SESSION['view_homecell_att_name'] = $homecell_name;
-        echo "<script>  window.location='view_homecell_attendance' </script>";
-    }
-
-    if($_POST['view_member']){
-        extract($_POST);
-        $_SESSION['view_member_att_id'] = $member_id;
-        $_SESSION['view_member_att_name'] = $member_name;
-        echo "<script>  window.location='view_member_attendance' </script>";
+        $_SESSION['view_member_id'] = $member_id;
+        echo "<script>  window.location='view_member' </script>";
     }
 ?>

@@ -165,90 +165,105 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Homecell Leaders</h4>
+                <h4 class="card-title">All Admin</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Date</th>
-                                <th>Remove</th>
-                                <th class="text-right">View</th>
-                            </tr>
+                            <th>Name</th>
+                            <th>email</th>
+                            <th>Church</th>
+                            <th>Homecell</th>
+                            <th>Remove</th>
+                            <th class='text-right'>View</th>
                         </thead>
                         <tbody>
                             <?php
                             
-                                $tblquery = "SELECT members.id, members.last_name, members.first_name, members.other_name, members.email, tbl_leaders.date FROM members INNER JOIN tbl_leaders ON members.id = tbl_leaders.user_id WHERE tbl_leaders.lead_id = :lead_id AND tbl_leaders.type = :type AND tbl_leaders.status = :status";
-                                $tblvalue = array(
-                                    ':lead_id' => $_SESSION['view_homecell_id'],
-                                    ':type' => 'H',
-                                    ':status' => '1'
-                                );
-                                $select = $connect->tbl_select($tblquery, $tblvalue);
+                                $tblquery = "SELECT members.id AS m_id, members.last_name, members.first_name, members.other_name, members.email, members.church_id AS c_id, members.homecell_id AS h_id FROM members INNER JOIN tbl_login ON members.id = tbl_login.user_id WHERE level = 'A'";
+                                $tblvalue = array();
+                                $select =$connect->tbl_select($tblquery, $tblvalue);
                                 if($select){
                                     foreach($select as $data){
                                         extract($data);
-                                        echo "
-                                            <tr>
-                                                <td>$last_name $first_name $other_name</td>
-                                                <td>$email</td>
-                                                <td>$date</td>
-                                                <td>
-                                                    <form action='' method='post'>
-                                                        <input type='hidden' name='id' value='$id'>
-                                                        <input type='hidden' name='homecell_id' value='$homecell_id'>
-                                                        <input type='hidden' name='email' value='$email'>
-                                                        <input type='hidden' name='password' value='$password'>
-                                                        <a class='btn btn-danger btn-sm' onclick='popupBox()'>remove</a>
+                                        
+                                        $tblquery = "SELECT name AS c_name FROM churches WHERE id = $c_id";
+                                        $tblvalue = array();
+                                        $select1 =$connect->tbl_select($tblquery, $tblvalue);
+                                        if($select1){
+                                            foreach($select1 as $data){
+                                                extract($data);
+                                                
+                                                $tblquery = "SELECT name AS h_name FROM homecells WHERE id = $h_id";
+                                                $tblvalue = array();
+                                                $select1 =$connect->tbl_select($tblquery, $tblvalue);
+                                                if($select1){
+                                                    foreach($select1 as $data){
+                                                        extract($data);
+                                                        ?>
+                                                        <?php
+                                                            echo "
+                                                                <tr>
+                                                                    <td>$last_name $first_name $other_name</td>
+                                                                    <td>$email</td>
+                                                                    <td>$c_name</td>
+                                                                    <td>$h_name</td>
+                                                                    <td>
+                                                                        <form action='' method='post'>
+                                                                            <input type='hidden' name='id' value='$id'>
+                                                                            <input type='hidden' name='homecell_id' value='$homecell_id'>
+                                                                            <input type='hidden' name='email' value='$email'>
+                                                                            <input type='hidden' name='password' value='$password'>
+                                                                            <a class='btn btn-danger btn-sm' onclick='popupBox()'>remove</a>
 
-                                                        <div class='popup-main'>
-                                                            <div class='main-box'>
-                                                                <div class='head bg-danger'>
-                                                                    <h3 class='ml-2 text-white'>Remove <i class='nc-icon nc-alert-circle-i'></i></h3>
-                                                                    <div class='close' onclick='popupBox()'>
-                                                                        <i class='nc-icon nc-simple-remove'></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='bottom p-3'>
-                                                                    <div class='row'>
-                                                                        <div class='col-md-12'>
-                                                                            <div class='form-group'>
-                                                                                <label class='mt-1'>Reason</label>
-                                                                                <textarea class='form-control textarea' name='reason' required></textarea>
+                                                                            <div class='popup-main'>
+                                                                                <div class='main-box'>
+                                                                                    <div class='head bg-danger'>
+                                                                                        <h3 class='ml-2 text-white'>Remove <i class='fa fa-exclamation' aria-hidden='true'></i></h3>
+                                                                                        <div class='close' onclick='popupBox()'>
+                                                                                            <i class='fa fa-times' aria-hidden='true'></i>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class='bottom p-3'>
+                                                                                        <div class='row'>
+                                                                                            <div class='col-md-12'>
+                                                                                                <div class='form-group'>
+                                                                                                    <label class='mt-1'>Reason</label>
+                                                                                                    <textarea class='form-control textarea' name='reason' required></textarea>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class='row mb-2'>
+                                                                                            <div class='update ml-auto mr-auto'>
+                                                                                                <input type='submit' name='remove' class='btn btn-danger btn-sm' value='remove'>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class='row mb-2'>
-                                                                        <div class='update ml-auto mr-auto'>
-                                                                            <input type='submit' name='remove' class='btn btn-danger btn-sm' value='remove'>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </td>
-                                                <td class='text-right'>
-                                                    <form method='post'>
-                                                        <input type='hidden' name='member_id' value='$id'>
-                                                        <input type='submit' name='view' class='btn btn-success btn-sm' value='view'>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        ";
+                                                                        </form>
+                                                                    </td>
+                                                                    <td>
+                                                                        <form action='' method='POST'>
+                                                                            <input type='hidden' name='member_id' value='$m_id'>
+                                                                            <input type='submit' name='view' class='btn btn-info' value='view'>
+                                                                        </form>
+                                                                    </td>
+                                                                </tr>
+                                                            ";
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }else{
                                     echo "
                                         <tr>
-                                            <td colspan='5'>There is no Leader for this homecell</td>
+                                            <td colspan='6'>There is no Admin</td>
                                         </tr>
                                     ";
                                 }
-                            
                             ?>
                         </tbody>
                     </table>

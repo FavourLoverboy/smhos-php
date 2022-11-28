@@ -44,7 +44,11 @@
                     $lead = $connect->tbl_select($tblquery, $tblvalue);
                     foreach($lead as $data){
                         extract($data);
-                        if($type == 'C'){
+                        if($type == 'A'){
+                            echo "
+                                <h5 class='text-center bg-primary text-white p-2'>Admin</h5>
+                            ";
+                        }else if($type == 'C'){
                             echo "
                                 <h5 class='text-center bg-primary text-white p-2'>Church Leader</h5>
                             ";
