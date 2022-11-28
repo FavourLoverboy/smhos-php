@@ -32,13 +32,13 @@
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
+                            <th>Date</th>
                             <th>Theme</th>
                             <th>Verse</th>
                             <th>Added By</th>
                             <th>Attendants</th>
                             <th>Absenties</th>
                             <th>Members</th>
-                            <th>Date</th>
                             <th>View</th>
                         </thead>
                         <tbody>
@@ -68,13 +68,13 @@
                                                 $absent = $members - $attendance;
                                                 echo "
                                                     <tr>
+                                                        <td>$date</td>
                                                         <td>$theme</td>
                                                         <td>$verse</td>
                                                         <td>$last_name $first_name $other_name</td>
                                                         <td>$attendance</td>
                                                         <td>$absent</td>
                                                         <td>$members</td>
-                                                        <td>$date</td>
                                                         <td class='text-right'>
                                                             <form method='post' action=''>
                                                                 <input type='hidden' name='theme_id' value='$theme_id'>
