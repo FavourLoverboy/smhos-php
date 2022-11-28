@@ -24,10 +24,10 @@
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
+                            <th>Date</th>
                             <th>Theme</th>
                             <th>Verse</th>
                             <th>Attendants</th>
-                            <th>Date</th>
                             <th>View</th>
                         </thead>
                         <tbody>
@@ -43,10 +43,10 @@
 
                                     echo "
                                         <tr>
+                                            <td>$date</td>
                                             <td>$theme</td>
                                             <td>$verse</td>
                                             <td>$attendance</td>
-                                            <td>$date</td>
                                             <td class='text-right'>
                                                 <form method='post' action=''>
                                                     <input type='hidden' name='theme_id' value='$theme_id'>

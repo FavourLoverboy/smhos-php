@@ -1,6 +1,6 @@
 <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
-        <a href="<?php echo $url[0]; ?>/dashboard" class="simple-text logo-normal">
+        <a href="dashboard" class="simple-text logo-normal">
             <!-- SMHOS -->
             <div class="logo-image-big">
                 <img src="../assets/logo.png">

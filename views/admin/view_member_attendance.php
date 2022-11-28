@@ -16,10 +16,10 @@
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
+                            <th>Date</th>
                             <th>Theme</th>
                             <th>Verse</th>
                             <th>Homecell</th>
-                            <th>Date</th>
                             <th>Attendance</th>
                         </thead>
                         <tbody>
@@ -43,10 +43,10 @@
                                             extract($data);
                                             echo "
                                                 <tr>
+                                                    <td>$date</td>
                                                     <td>$theme</td>
                                                     <td>$verse</td>
                                                     <td>$name</td>
-                                                    <td>$date</td>
                                                     <td class='text-success btn-sm'>attended</td>
                                                 </tr>
                                             ";
@@ -54,10 +54,10 @@
                                     }else{
                                         echo "
                                             <tr>
+                                                <td>$date</td>
                                                 <td>$theme</td>
                                                 <td>$verse</td>
                                                 <td>no homecell</td>
-                                                <td>$date</td>
                                                 <td class='text-danger btn-sm'>absent</td>
                                             </tr>
                                         ";

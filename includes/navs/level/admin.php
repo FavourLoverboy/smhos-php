@@ -35,6 +35,12 @@
     </a>
 </li>
 <li>
+    <a href="leaders">
+        <i class="fa fa-calendar"></i>
+        <p>Leaders</p>
+    </a>
+</li>
+<li>
     <a href="members">
         <i class="fa fa-users"></i>
         <p>Members</p>

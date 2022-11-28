@@ -31,7 +31,7 @@
 <li>
     <a href="members_attendance">
         <i class="fa fa-users"></i>
-        <p>Members Attendance</p>
+        <p>M. Attendance</p>
     </a>
 </li>
 <li>

@@ -99,9 +99,10 @@
                         <tbody>
                             <?php
                                 
-                                $tblquery = "SELECT attendance.user, members.id, members.last_name, members.first_name, members.other_name, members.homecell_id FROM attendance INNER JOIN members ON attendance.user = members.id WHERE members.homecell_id = :id AND attendance.h_id = ''";
+                                $tblquery = "SELECT attendance.user, members.id, members.last_name, members.first_name, members.other_name, members.homecell_id FROM attendance INNER JOIN members ON attendance.user = members.id WHERE members.homecell_id = :id AND attendance.h_id = '' AND attendance.theme_id = :t_id";
                                 $tblvalue = array(
-                                    ':id' => $_SESSION['homecell_id']
+                                    ':id' => $_SESSION['homecell_id'],
+                                    ':t_id' => $_SESSION['theme_id']
                                 );
                                 $select = $connect->tbl_select($tblquery, $tblvalue);
                                 if($select){
