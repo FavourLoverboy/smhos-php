@@ -39,35 +39,46 @@
                         );
                         $select120 = $connect->tbl_select($tblquery, $tblvalue);
                         if(!$select120){
-                            $tblquery1 = "INSERT INTO tbl_leaders VALUES(:id, :assignBy, :user_id, :lead_id, :type, :reason, :date, :status)";
-                            $tblvalue1 = array(
-                                ':id' =>  NULL,
-                                ':assignBy' =>  $_SESSION['myId'],
+                            $tblquery = "SELECT * FROM tbl_leaders WHERE user_id = :user_id AND type = :type AND status = :status";
+                            $tblvalue = array(
                                 ':user_id' =>  $id,
-                                ':lead_id' => $_SESSION['view_homecell_id'],
-                                ':type' => 'H',
-                                ':reason' => '',
-                                ':date' => date("Y-m-d h:i"),
+                                ':type' => 'A',
                                 ':status' => '1'
                             );
-                            $insert = $connect->tbl_insert($tblquery1, $tblvalue1);
-                            if($insert){
-                                $tblquery1 = "INSERT INTO tbl_login VALUES(:id, :assignBy, :user_id, :email, :password, :church_id, :homecell_id, :level, :status, :date)";
+                            $select150 = $connect->tbl_select($tblquery, $tblvalue);
+                            if(!$select150){
+                                $tblquery1 = "INSERT INTO tbl_leaders VALUES(:id, :assignBy, :user_id, :lead_id, :type, :reason, :date, :status)";
                                 $tblvalue1 = array(
                                     ':id' =>  NULL,
                                     ':assignBy' =>  $_SESSION['myId'],
                                     ':user_id' =>  $id,
-                                    ':email' => htmlspecialchars($email),
-                                    ':password' => htmlspecialchars($password),
-                                    ':church_id' => '',
-                                    ':homecell_id' => htmlspecialchars($homecell_id),
-                                    ':level' => 'L',
-                                    ':status' => '1',
-                                    ':date' => date("Y-m-d h:i")
+                                    ':lead_id' => $_SESSION['view_homecell_id'],
+                                    ':type' => 'H',
+                                    ':reason' => '',
+                                    ':date' => date("Y-m-d h:i"),
+                                    ':status' => '1'
                                 );
-                                $insert20 = $connect->tbl_insert($tblquery1, $tblvalue1);
-                                $_SESSION['Message'] = 'Member has been assign';
-                                $erremail = '';
+                                $insert = $connect->tbl_insert($tblquery1, $tblvalue1);
+                                if($insert){
+                                    $tblquery1 = "INSERT INTO tbl_login VALUES(:id, :assignBy, :user_id, :email, :password, :church_id, :homecell_id, :level, :status, :date)";
+                                    $tblvalue1 = array(
+                                        ':id' =>  NULL,
+                                        ':assignBy' =>  $_SESSION['myId'],
+                                        ':user_id' =>  $id,
+                                        ':email' => htmlspecialchars($email),
+                                        ':password' => htmlspecialchars($password),
+                                        ':church_id' => '',
+                                        ':homecell_id' => htmlspecialchars($homecell_id),
+                                        ':level' => 'L',
+                                        ':status' => '1',
+                                        ':date' => date("Y-m-d h:i")
+                                    );
+                                    $insert20 = $connect->tbl_insert($tblquery1, $tblvalue1);
+                                    $_SESSION['Message'] = 'Member has been assign';
+                                    $erremail = '';
+                                }
+                            }else{
+                                $_SESSION['Message'] = 'Member is already an Admin';
                             }
                         }else{
                             $_SESSION['Message'] = 'Member is already a Church Leader';
@@ -210,9 +221,9 @@
                                                         <div class='popup-main'>
                                                             <div class='main-box'>
                                                                 <div class='head bg-danger'>
-                                                                    <h3 class='ml-2 text-white'>Remove <i class='nc-icon nc-alert-circle-i'></i></h3>
+                                                                    <h3 class='ml-2 text-white'>Remove <i class='fa fa-exclamation' aria-hidden='true'></i></h3>
                                                                     <div class='close' onclick='popupBox()'>
-                                                                        <i class='nc-icon nc-simple-remove'></i>
+                                                                        <i class='fa fa-times' aria-hidden='true'></i>
                                                                     </div>
                                                                 </div>
                                                                 <div class='bottom p-3'>

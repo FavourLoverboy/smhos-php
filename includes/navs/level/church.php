@@ -6,7 +6,7 @@
 </li>
 <li>
     <a href="all_attendance">
-        <i class="fa fa-bar-chart"></i>
+        <i class="fa fa-line-chart"></i>
         <p>All Attendance</p>
     </a>
 </li>

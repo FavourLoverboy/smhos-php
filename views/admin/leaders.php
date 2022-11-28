@@ -52,7 +52,7 @@
                                     <tbody>
                                         <?php
                                         
-                                            $tblquery = "SELECT members.id AS m_id, members.last_name, members.first_name, members.other_name, members.email, members.church_id AS c_id, members.homecell_id AS h_id FROM members INNER JOIN tbl_login ON members.id = tbl_login.user_id WHERE level = 'A'";
+                                            $tblquery = "SELECT members.id AS m_id, members.last_name, members.first_name, members.other_name, members.email, members.church_id AS c_id, members.homecell_id AS h_id FROM members INNER JOIN tbl_login ON members.id = tbl_login.user_id WHERE tbl_login.level = 'A'";
                                             $tblvalue = array();
                                             $select =$connect->tbl_select($tblquery, $tblvalue);
                                             if($select){
@@ -118,47 +118,69 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Homecells</h4>
+                            <h4 class="card-title">Church Leaders</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table">
+                            <table class="table">
                                     <thead class=" text-primary">
                                         <th>Name</th>
-                                        <th>Address</th>
-                                        <th class="text-right">View</th>
+                                        <th>email</th>
+                                        <th>Church</th>
+                                        <th>Homecell</th>
+                                        <th>View</th>
                                     </thead>
                                     <tbody>
                                         <?php
-                                            
-                                            $tblquery = "SELECT * FROM homecells ORDER BY name";
+                                        
+                                            $tblquery = "SELECT members.id AS m_id, members.last_name, members.first_name, members.other_name, members.email, members.church_id AS c_id, members.homecell_id AS h_id FROM members INNER JOIN tbl_login ON members.id = tbl_login.user_id WHERE tbl_login.level = 'C'";
                                             $tblvalue = array();
-                                            $select = $connect->tbl_select($tblquery, $tblvalue);
+                                            $select =$connect->tbl_select($tblquery, $tblvalue);
                                             if($select){
                                                 foreach($select as $data){
                                                     extract($data);
-                                                    echo "
-                                                        <tr>
-                                                            <td>$name</td>
-                                                            <td>$address</td>
-                                                            <td class='text-right'>
-                                                                <form method='post' action=''>
-                                                                    <input type='hidden' name='homecell_id' value='$id'>
-                                                                    <input type='hidden' name='homecell_name' value='$name'>
-                                                                    <input type='submit' name='view_homecell' class='btn btn-warning' value='view'>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    ";
+
+                                                    $tblquery = "SELECT name AS c_name FROM churches WHERE id = $c_id";
+                                                    $tblvalue = array();
+                                                    $select1 =$connect->tbl_select($tblquery, $tblvalue);
+                                                    if($select1){
+                                                        foreach($select1 as $data){
+                                                            extract($data);
+                                                            
+                                                            $tblquery = "SELECT name AS h_name FROM homecells WHERE id = $h_id";
+                                                            $tblvalue = array();
+                                                            $select1 =$connect->tbl_select($tblquery, $tblvalue);
+                                                            if($select1){
+                                                                foreach($select1 as $data){
+                                                                    extract($data);
+                                                                    ?>
+                                                                    <?php
+                                                                        echo "
+                                                                            <tr>
+                                                                                <td>$last_name $first_name $other_name</td>
+                                                                                <td>$email</td>
+                                                                                <td>$c_name</td>
+                                                                                <td>$h_name</td>
+                                                                                <td>
+                                                                                    <form action='' method='POST'>
+                                                                                        <input type='hidden' name='member_id' value='$m_id'>
+                                                                                        <input type='submit' name='view' class='btn btn-info' value='view'>
+                                                                                    </form>
+                                                                                </td>
+                                                                            </tr>
+                                                                        ";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }else{
                                                 echo "
                                                     <tr>
-                                                        <td colspan='6'>There is no Homecell</td>
+                                                        <td colspan='6'>There is no Church Leader</td>
                                                     </tr>
                                                 ";
-                                            }                              
-                                        
+                                            }
                                         ?>
                                     </tbody>
                                 </table>
@@ -177,53 +199,69 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Members</h4>
+                            <h4 class="card-title">Host/Hostess</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table">
+                            <table class="table">
                                     <thead class=" text-primary">
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Sex</th>
-                                        <th>Number</th>
-                                        <th>Marital Status</th>
-                                        <th class="text-right">View</th>
+                                        <th>email</th>
+                                        <th>Church</th>
+                                        <th>Homecell</th>
+                                        <th>View</th>
                                     </thead>
                                     <tbody>
                                         <?php
-                                            
-                                            $tblquery = "SELECT * FROM members ORDER BY last_name";
+                                        
+                                            $tblquery = "SELECT members.id AS m_id, members.last_name, members.first_name, members.other_name, members.email, members.church_id AS c_id, members.homecell_id AS h_id FROM members INNER JOIN tbl_login ON members.id = tbl_login.user_id WHERE tbl_login.level = 'L'";
                                             $tblvalue = array();
-                                            $select = $connect->tbl_select($tblquery, $tblvalue);
+                                            $select =$connect->tbl_select($tblquery, $tblvalue);
                                             if($select){
                                                 foreach($select as $data){
                                                     extract($data);
-                                                    echo "
-                                                        <tr>
-                                                            <td>$last_name $first_name $other_name</td>
-                                                            <td>$email</td>
-                                                            <td>$sex</td>
-                                                            <td>$number</td>
-                                                            <td>$marital_status</td>
-                                                            <td class='text-right'>
-                                                                <form method='post' action=''>
-                                                                    <input type='hidden' name='member_id' value='$id'>
-                                                                    <input type='hidden' name='member_name' value='$last_name $first_name $other_name'>
-                                                                    <input type='submit' name='view_member' class='btn btn-primary' value='view'>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    ";
+
+                                                    $tblquery = "SELECT name AS c_name FROM churches WHERE id = $c_id";
+                                                    $tblvalue = array();
+                                                    $select1 =$connect->tbl_select($tblquery, $tblvalue);
+                                                    if($select1){
+                                                        foreach($select1 as $data){
+                                                            extract($data);
+                                                            
+                                                            $tblquery = "SELECT name AS h_name FROM homecells WHERE id = $h_id";
+                                                            $tblvalue = array();
+                                                            $select1 =$connect->tbl_select($tblquery, $tblvalue);
+                                                            if($select1){
+                                                                foreach($select1 as $data){
+                                                                    extract($data);
+                                                                    ?>
+                                                                    <?php
+                                                                        echo "
+                                                                            <tr>
+                                                                                <td>$last_name $first_name $other_name</td>
+                                                                                <td>$email</td>
+                                                                                <td>$c_name</td>
+                                                                                <td>$h_name</td>
+                                                                                <td>
+                                                                                    <form action='' method='POST'>
+                                                                                        <input type='hidden' name='member_id' value='$m_id'>
+                                                                                        <input type='submit' name='view' class='btn btn-info' value='view'>
+                                                                                    </form>
+                                                                                </td>
+                                                                            </tr>
+                                                                        ";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }else{
                                                 echo "
                                                     <tr>
-                                                        <td colspan='6'>There is no Member</td>
+                                                        <td colspan='6'>There is no Host/Hostess</td>
                                                     </tr>
                                                 ";
-                                            }                              
-                                        
+                                            }
                                         ?>
                                     </tbody>
                                 </table>

@@ -179,7 +179,7 @@
                         <tbody>
                             <?php
                             
-                                $tblquery = "SELECT members.id AS m_id, members.last_name, members.first_name, members.other_name, members.email, members.church_id AS c_id, members.homecell_id AS h_id FROM members INNER JOIN tbl_login ON members.id = tbl_login.user_id WHERE level = 'A'";
+                                $tblquery = "SELECT members.id AS m_id, members.last_name, members.first_name, members.other_name, members.email, members.church_id AS c_id, members.homecell_id AS h_id FROM members INNER JOIN tbl_login ON members.id = tbl_login.user_id WHERE tbl_login.level = 'A'";
                                 $tblvalue = array();
                                 $select =$connect->tbl_select($tblquery, $tblvalue);
                                 if($select){

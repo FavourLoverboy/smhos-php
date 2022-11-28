@@ -6,7 +6,7 @@
 </li>
 <li>
     <a href="attendance">
-        <i class="fa fa-university"></i>
+        <i class="fa fa-bar-chart"></i>
         <p>Attendance</p>
     </a>
 </li>
@@ -36,7 +36,7 @@
 </li>
 <li>
     <a href="leaders">
-        <i class="fa fa-calendar"></i>
+        <i class="fa fa-bolt"></i>
         <p>Leaders</p>
     </a>
 </li>
