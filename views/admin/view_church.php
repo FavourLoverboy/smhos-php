@@ -268,6 +268,13 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-3">
+        <a href="change_church_name">
+            <button type="button" class="btn btn-info ml-2">Change Name</button>
+        </a>
+    </div>
+</div>
 <?php 
 
     if($_POST['view']){
