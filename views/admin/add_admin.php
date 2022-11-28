@@ -86,23 +86,21 @@
 
     if($_POST['remove']){
         extract($_POST);
-        $tblquery = "UPDATE tbl_leaders SET reason = :reason, status = '0' WHERE user_id = :user_id AND lead_id = :lead_id AND type = 'H'";
+        $tblquery = "UPDATE tbl_leaders SET reason = :reason, status = '0' WHERE user_id = :user_id AND type = 'A'";
         $tblvalue = array(
             ':reason' => htmlspecialchars($reason),
             ':user_id' => htmlspecialchars($id),
-            ':lead_id' => htmlspecialchars($homecell_id),
         );
         $update = $connect->tbl_update($tblquery, $tblvalue);
         if($update){
             extract($_POST);
-            $tblquery = "DELETE FROM tbl_login WHERE email = :email AND homecell_id = :homecell_id AND level = 'H'";
+            $tblquery = "DELETE FROM tbl_login WHERE email = :email AND level = 'A'";
             $tblvalue = array(
-                ':email' => htmlspecialchars($email),
-                ':homecell_id' => htmlspecialchars($homecell_id)
+                ':email' => htmlspecialchars($email)
             );
             $delete = $connect->tbl_delete($tblquery, $tblvalue);
             if($delete){
-                $_SESSION['Message'] = 'Member has been remove as Homecell leader';
+                $_SESSION['Message'] = 'Member has been remove as Admin';
             }
         }
 
@@ -211,10 +209,8 @@
                                                                     <td>$h_name</td>
                                                                     <td>
                                                                         <form action='' method='post'>
-                                                                            <input type='hidden' name='id' value='$id'>
-                                                                            <input type='hidden' name='homecell_id' value='$homecell_id'>
+                                                                            <input type='hidden' name='id' value='$m_id'>
                                                                             <input type='hidden' name='email' value='$email'>
-                                                                            <input type='hidden' name='password' value='$password'>
                                                                             <a class='btn btn-danger btn-sm' onclick='popupBox()'>remove</a>
 
                                                                             <div class='popup-main'>
