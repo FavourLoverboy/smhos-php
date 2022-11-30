@@ -14,6 +14,12 @@
                     <p>H. Attendance</p>
                 </a>
             </li>
+            <li>
+                <a href='maritalStatus'>
+                    <i class='fa fa-heart'></i>
+                    <p>Marital Status</p>
+                </a>
+            </li>
         ";
     }else{
         echo "
@@ -24,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href='analyse'>
+                <a href='attendance_chart'>
                     <i class='fa fa-pie-chart'></i>
                     <p>Analyse</p>
                 </a>

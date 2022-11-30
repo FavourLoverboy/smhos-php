@@ -191,8 +191,6 @@
                                 <datalist id="marital-status">
                                     <option value="Divorced">
                                     <option value="Married">
-                                    <option value="Registered Partnership">
-                                    <option value="Separated">
                                     <option value="Single">
                                     <option value="Widowed">
                                 </datalist>

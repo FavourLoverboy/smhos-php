@@ -1,3 +1,8 @@
+<?php
+
+    $_SESSION['analyseStatus'] = true;
+
+?>
 <div class="container-fluid pt-5">
     <div class="row">
         <div class="p-2">
