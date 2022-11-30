@@ -16,14 +16,18 @@
         <link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon.ico">
         <link rel="shortcut icon" type="image/x-icon" href="../assets/favicon.ico">
 
-        <!-- title -->
+        
 
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 
+        <!-- CDNs -->
+
         <!-- DataTable -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
+       <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <!-- Custom styles for this template-->
         <link rel="stylesheet" href="../css/bootstrap.min.css">

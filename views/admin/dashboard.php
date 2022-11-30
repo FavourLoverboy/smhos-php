@@ -232,3 +232,11 @@
         </div>
     </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+</div>
