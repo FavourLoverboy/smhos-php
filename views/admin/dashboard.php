@@ -393,9 +393,63 @@
         </script>
 
 
-        <div class="col-md-5 ml-5 bg-info" style="height: 500px;">
-        
+        <div class="col-md-5 ml-5" style="height: 500px;">
+            <canvas id="login" class="w-100"></canvas>
         </div>
+
+        <?php
+        
+            $bap = array();
+
+            $tblquery = "SELECT COUNT(id) AS bapt FROM members WHERE baptise != ''";
+            $tblvalue = array();
+            $baptise = $connect->tbl_select($tblquery, $tblvalue);
+            foreach($baptise as $data){
+                extract($data);
+                array_push($bap, $bapt);
+            }
+
+            $tblquery = "SELECT COUNT(id) AS no_bap FROM members WHERE baptise = ''";
+            $tblvalue = array();
+            $empty = $connect->tbl_select($tblquery, $tblvalue);
+            foreach($empty as $data){
+                extract($data);
+                array_push($bap, $no_bap);
+            }
+        
+        ?>
+
+        <script>
+            const login = document.getElementById('login');
+
+            new Chart(login, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Baptise', 'Not Baptise'],
+                    datasets: [{
+                        data: <?php echo json_encode($bap); ?>,
+                        borderWidth: 1
+                    }]
+                },
+                backgroundColor: [
+                    'yellow',
+                    'peru'
+                ],
+                hoverOffset: 4,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Members base on Sex'
+                        }
+                    }
+                }
+            });
+        </script>
     </div>
 </div>
 
