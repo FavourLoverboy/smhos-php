@@ -11,7 +11,7 @@
             <li>
                 <a href='attendance_chart'>
                     <i class='fa fa-book'></i>
-                    <p>Homecell Themes</p>
+                    <p>H. Attendance</p>
                 </a>
             </li>
         ";
