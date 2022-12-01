@@ -15,6 +15,12 @@
                 </a>
             </li>
             <li>
+                <a href='c_members'>
+                    <i class='fa fa-tint'></i>
+                    <p>C. Members</p>
+                </a>
+            </li>
+            <li>
                 <a href='attendance_chart'>
                     <i class='fa fa-book'></i>
                     <p>H. Attendance</p>
