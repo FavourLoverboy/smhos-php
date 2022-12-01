@@ -20,6 +20,12 @@
                     <p>Marital Status</p>
                 </a>
             </li>
+            <li>
+                <a href='sex'>
+                    <i class='fa fa-life-ring'></i>
+                    <p>Sex</p>
+                </a>
+            </li>
         ";
     }else{
         echo "

@@ -3,7 +3,7 @@
         <h3>Members Marital Status</h3>
     </div>
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10" style="height: 500px; margin: 10px auto; width:400px;">
             <canvas id="maritalStatus"></canvas>
         </div>
     </div>
