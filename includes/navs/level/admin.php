@@ -32,6 +32,12 @@
                     <p>S. Age</p>
                 </a>
             </li>
+            <li>
+                <a href='month'>
+                    <i class='fa fa-list-ol'></i>
+                    <p>Month</p>
+                </a>
+            </li>
         ";
     }else{
         echo "
