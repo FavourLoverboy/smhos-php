@@ -15,6 +15,12 @@
                 </a>
             </li>
             <li>
+                <a href='c_homecells'>
+                    <i class='fa fa-tint'></i>
+                    <p>C. Homecells</p>
+                </a>
+            </li>
+            <li>
                 <a href='c_members'>
                     <i class='fa fa-tint'></i>
                     <p>C. Members</p>
