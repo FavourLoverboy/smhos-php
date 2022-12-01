@@ -21,6 +21,12 @@
                 </a>
             </li>
             <li>
+                <a href='login'>
+                    <i class='fa fa-sign-in'></i>
+                    <p>Login</p>
+                </a>
+            </li>
+            <li>
                 <a href='maritalStatus'>
                     <i class='fa fa-heart'></i>
                     <p>Marital Status</p>
