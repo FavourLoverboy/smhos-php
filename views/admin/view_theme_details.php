@@ -45,7 +45,7 @@
                                 if($select){
                                     foreach($select as $data){
                                         extract($data);
-                                        $time = substr($date, 11, 18);;
+                                        $time = substr($date, 11, 18);
 
                                         $tblquery = "SELECT name FROM homecells WHERE id = :homecell";
                                         $tblvalue = array(

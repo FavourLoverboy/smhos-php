@@ -26,6 +26,12 @@
                     <p>Sex</p>
                 </a>
             </li>
+            <li>
+                <a href='sex_age'>
+                    <i class='fa fa-list-ol'></i>
+                    <p>S. Age</p>
+                </a>
+            </li>
         ";
     }else{
         echo "
