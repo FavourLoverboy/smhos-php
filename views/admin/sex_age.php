@@ -174,7 +174,7 @@
                         labels: <?php echo json_encode($fAge); ?>,
                         datasets: [
                             {
-                                label: 'Male',
+                                label: 'Female',
                                 data: <?php echo json_encode($fCount); ?>,
                                 fill: false,
                                 borderColor: 'rgb(75, 192, 192)',
@@ -209,7 +209,7 @@
         <div class="accordion-body">
         <div class="row">
                 <div class="p-2">
-                    <h3>Female Members Age Chart</h3>
+                    <h3>Both Members Age Chart</h3>
                 </div>
                 <div class="col-12">
                     <div class="col-12">pupulation</div>

@@ -9,6 +9,12 @@
                 </a>
             </li>
             <li>
+                <a href='baptise'>
+                    <i class='fa fa-tint'></i>
+                    <p>Baptise</p>
+                </a>
+            </li>
+            <li>
                 <a href='attendance_chart'>
                     <i class='fa fa-book'></i>
                     <p>H. Attendance</p>
