@@ -1,5 +1,6 @@
 <?php
     $_SESSION['Message'] = '';
+
     if($_POST){
         extract($_POST);
         $homecell_id = '';
@@ -57,7 +58,10 @@
         
         if(!$checkEmail){
             if(!($errC || $errH)){
-                $tblquery = "INSERT INTO members VALUES(:id, :createdBy, :last_name, :first_name, :other_name, :email, :number, :address, :baptise, :sex, :dob, :marital_status, :lga, :state, :country, :continent, :username, :password, :profile, :login, :homecell_id, :church_id, :date, :status)";
+
+                $month = substr($dob, -5, -3);
+
+                $tblquery = "INSERT INTO members VALUES(:id, :createdBy, :last_name, :first_name, :other_name, :email, :number, :address, :baptise, :sex, :dob, :month, :marital_status, :lga, :state, :country, :continent, :username, :password, :profile, :login, :homecell_id, :church_id, :date, :status)";
                 $tblvalue = array(
                     ':id' => NULL,
                     ':createdBy' => $_SESSION['myId'],
@@ -70,6 +74,7 @@
                     ':baptise' => htmlspecialchars($baptise),
                     ':sex' => htmlspecialchars(ucwords($sex)),
                     ':dob' => htmlspecialchars($dob),
+                    ':month' => htmlspecialchars($month),
                     ':marital_status' => htmlspecialchars(ucwords($marital_status)),
                     ':lga' => htmlspecialchars(ucwords($lga)),
                     ':state' => htmlspecialchars(ucwords($state)),
@@ -169,7 +174,15 @@
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Continent</label>
-                                <input type="text" class="form-control" name="continent" placeholder="enter continent" value="<?php echo $continent; ?>" required>
+                                <select class="form-control" name="continent" required>
+                                    <option value="<?php echo $continent; ?>"><?php echo $continent; ?></option>
+                                    <option value="Africa">Africa</option>
+                                    <option value="Asia">Asia</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Europe">Europe</option>
+                                    <option value="North America">North America</option>
+                                    <option value="South America">South America</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -177,23 +190,23 @@
                         <div class="col-md-3 pr-1">
                             <div class="form-group">
                                 <label>Sex</label>
-                                <input list="sex" class="form-control" name="sex" placeholder="sex" value="<?php echo $sex; ?>" required>
-                                <datalist id="sex">
-                                    <option value="M">
-                                    <option value="F">
-                                </datalist>
+                                <select class="form-control" name="sex" required>
+                                    <option value="<?php echo $sex; ?>"><?php echo $sex; ?></option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-3 px-1">
                             <div class="form-group">
                                 <label>Marital Status</label>
-                                <input list="marital-status" class="form-control" name="marital_status" placeholder="marital status" value="<?php echo $marital_status; ?>" required>
-                                <datalist id="marital-status">
-                                    <option value="Divorced">
-                                    <option value="Married">
-                                    <option value="Single">
-                                    <option value="Widowed">
-                                </datalist>
+                                <select class="form-control" name="marital_status" required>
+                                    <option value="<?php echo $marital_status; ?>"><?php echo $marital_status; ?></option>
+                                    <option value="Divorced">Divorced</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Widowed">Widowed</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-3 px-1">

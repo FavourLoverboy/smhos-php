@@ -4,8 +4,8 @@
         echo "
             <li>
                 <a href='dashboard'>
-                    <i class='fa fa-backward'></i>
-                    <p>Back</p>
+                    <i class='fa fa-dashboard'></i>
+                    <p>Dashboard</p>
                 </a>
             </li>
             <li>

@@ -51,17 +51,17 @@
                 <form action="" method="post">
                     <div class="row">
                         <div class="col-md-6 pr-1">
-                            <div class="form-group">
-                                <label for="continent">Continent</label>
-                                <input list="continent" name="continent" class="form-control continent" placeholder="Continets" value="" required>
-                                <datalist id="continent">
-                                    <option value="Africa">
-                                    <option value="Asia">
-                                    <option value="Australia">
-                                    <option value="Europe">
-                                    <option value="North America">
-                                    <option value="South America">
-                                </datalist>
+                            <div class="form-group">                                
+                                <label>Continent</label>
+                                <select class="form-control continent" name="continent" required>
+                                    <option value="<?php echo $continent; ?>"><?php echo $continent; ?></option>
+                                    <option value="Africa">Africa</option>
+                                    <option value="Asia">Asia</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Europe">Europe</option>
+                                    <option value="North America">North America</option>
+                                    <option value="South America">South America</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
