@@ -14,30 +14,6 @@
                 </a>
             </li>
             <li>
-                <a href='c_homecells'>
-                    <i class='fa fa-home'></i>
-                    <p>C. Homecells</p>
-                </a>
-            </li>
-            <li>
-                <a href='c_members'>
-                    <i class='fa fa-users'></i>
-                    <p>C. Members</p>
-                </a>
-            </li>
-            <li>
-                <a href='continent_church'>
-                    <i class='fa fa-university'></i>
-                    <p>Continent .C</p>
-                </a>
-            </li>
-            <li>
-                <a href='continent'>
-                    <i class='fa fa-globe'></i>
-                    <p>Continent .M</p>
-                </a>
-            </li>
-            <li>
                 <a href='attendance_chart'>
                     <i class='fa fa-book'></i>
                     <p>H. Attendance</p>
@@ -86,6 +62,12 @@
                 <a href='dashboard'>
                     <i class='fa fa-dashboard'></i>
                     <p>Dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a href='attendance_chart'>
+                    <i class='fa fa-pie-chart'></i>
+                    <p>Analyse</p>
                 </a>
             </li>
             <li>
