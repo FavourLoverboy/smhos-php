@@ -108,17 +108,17 @@
             </div>
 
             <?php
-                $less_churches = array();
+                $less_homecells = array();
                 $less_members = array();
             
-                $tblquery = "SELECT COUNT(members.id) AS mebs, churches.name FROM members INNER JOIN churches ON members.church_id = churches.id GROUP BY members.church_id ORDER BY mebs, name LIMIT 5";
+                $tblquery = "SELECT COUNT(members.id) AS mebs, homecells.name FROM members INNER JOIN homecells ON members.homecell_id = homecells.id GROUP BY members.homecell_id ORDER BY mebs, name LIMIT 5";
                 $tblvalue = array();
                 $select = $connect->tbl_select($tblquery, $tblvalue);
                 
                 foreach($select as $data) {
                     extract($data);
                     
-                    array_push($less_churches, $name);
+                    array_push($less_homecells, $name);
                     array_push($less_members, $mebs);
                 }
             ?>
@@ -129,7 +129,7 @@
                 new Chart(ctxs, {
                     type: 'bar',
                     data: {
-                        labels: <?php echo json_encode($less_churches); ?>,
+                        labels: <?php echo json_encode($less_homecells); ?>,
                         datasets: [{
                             label: 'Less Populated',
                             data: <?php echo json_encode($less_members); ?>,
