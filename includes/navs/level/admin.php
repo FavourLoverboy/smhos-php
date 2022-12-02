@@ -27,9 +27,15 @@
                 </a>
             </li>
             <li>
+                <a href='continent_church'>
+                    <i class='fa fa-university'></i>
+                    <p>Continent .C</p>
+                </a>
+            </li>
+            <li>
                 <a href='continent'>
                     <i class='fa fa-globe'></i>
-                    <p>Continent</p>
+                    <p>Continent .M</p>
                 </a>
             </li>
             <li>

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="p-2">
-        <h3>Continent Member Populated</h3>
+        <h3>Continent Church Population</h3>
     </div>
     <div class="col-12">
         <canvas id="myChart"></canvas>
@@ -9,17 +9,17 @@
 
 <?php
     $con = array();
-    $members = array();
+    $churches = array();
 
-    $tblquery = "SELECT COUNT(id) AS mebs, continent FROM members GROUP BY continent";
+    $tblquery = "SELECT COUNT(id) AS church, continent FROM churches GROUP BY continent";
     $tblvalue = array();
     $select = $connect->tbl_select($tblquery, $tblvalue);
-    
+    // echo 'male <br>';
     foreach($select as $data) {
         extract($data);
         
         array_push($con, $continent);
-        array_push($members, $mebs);
+        array_push($churches, $church);
     }
 ?>
 
@@ -32,7 +32,7 @@
             labels: <?php echo json_encode($con); ?>,
             datasets: [{
                 label: 'Most Populated',
-                data: <?php echo json_encode($members); ?>,
+                data: <?php echo json_encode($churches); ?>,
                 borderWidth: 1,
                 backgroundColor: [
                     'rgb(255, 99, 132)',
