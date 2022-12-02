@@ -16,14 +16,20 @@
             </li>
             <li>
                 <a href='c_homecells'>
-                    <i class='fa fa-tint'></i>
+                    <i class='fa fa-home'></i>
                     <p>C. Homecells</p>
                 </a>
             </li>
             <li>
                 <a href='c_members'>
-                    <i class='fa fa-tint'></i>
+                    <i class='fa fa-users'></i>
                     <p>C. Members</p>
+                </a>
+            </li>
+            <li>
+                <a href='continent'>
+                    <i class='fa fa-globe'></i>
+                    <p>Continent</p>
                 </a>
             </li>
             <li>
@@ -34,7 +40,7 @@
             </li>
             <li>
                 <a href='h_members'>
-                    <i class='fa fa-book'></i>
+                    <i class='fa fa-users'></i>
                     <p>H. Members</p>
                 </a>
             </li>
@@ -64,7 +70,7 @@
             </li>
             <li>
                 <a href='month'>
-                    <i class='fa fa-list-ol'></i>
+                    <i class='fa fa-calendar'></i>
                     <p>Month</p>
                 </a>
             </li>
