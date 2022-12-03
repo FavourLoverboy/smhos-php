@@ -1,6 +1,6 @@
 <?php include('includes/authenticate/header.php');?>
 <?php 
-$errMessage = "";
+    $errMessage = "";
     if($_POST){
         extract($_POST);
         $encryptPassword = $connect->epass($password);
@@ -73,6 +73,16 @@ $errMessage = "";
     foreach($select as $data){
         extract($data);
         $_SESSION['profile'] = $profile;
+    }
+
+    $tblquery = "SELECT content FROM setting WHERE type = :t";
+    $tblvalue = array(
+        ':t' => 'title'
+    );
+    $title = $connect->tbl_select($tblquery, $tblvalue);
+    foreach($title as $data){
+        extract($data);
+        $_SESSION['page_title'] = $content;
     }
 ?>
     <div class="row">

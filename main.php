@@ -10,18 +10,22 @@
     $member = 'member';
 
     if($_SESSION['level'] == 'A'){
+        include('includes/titles/admin.php');
         if($url[0] != $admin){
             header("location: /smhos-php/$admin/dashboard");
         }
     }elseif($_SESSION['level'] == 'C'){
+        include('includes/titles/church.php');
         if($url[0] != $church){
             header("location: /smhos-php/$church/dashboard");
         }
     }elseif($_SESSION['level'] == 'L'){
+        include('includes/titles/leader.php');
         if($url[0] != $leader){
             header("location: /smhos-php/$leader/dashboard");
         }
     }else{
+        include('includes/titles/member.php');
         if($url[0] != $member){
             header("location: /smhos-php/$member/dashboard");
         }
