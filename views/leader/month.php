@@ -14,10 +14,11 @@
         
 
         function CheckAge($month, $sex, $connect){
-            $tblquery = "SELECT COUNT(id) AS total FROM members WHERE month = :month AND sex = :sex";
+            $tblquery = "SELECT COUNT(id) AS total FROM members WHERE month = :month AND sex = :sex AND homecell_id = :h";
             $tblvalue = array(
                 ':month' => $month,
-                ':sex' => $sex
+                ':sex' => $sex,
+                ':h' => $_SESSION['homecell_id']
             );
             $select = $connect->tbl_select($tblquery, $tblvalue);
             foreach($select as $data) {

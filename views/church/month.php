@@ -28,31 +28,31 @@
         }
 
         // Men
-        $mMonth = CheckAge('1', 'M', $connect);
+        $mMonth = CheckAge('01', 'M', $connect);
         array_push($m, $mMonth);
 
-        $mMonth = CheckAge('2', 'M', $connect);
+        $mMonth = CheckAge('02', 'M', $connect);
         array_push($m, $mMonth);
 
-        $mMonth = CheckAge('3', 'M', $connect);
+        $mMonth = CheckAge('03', 'M', $connect);
         array_push($m, $mMonth);
 
-        $mMonth = CheckAge('4', 'M', $connect);
+        $mMonth = CheckAge('04', 'M', $connect);
         array_push($m, $mMonth);
 
-        $mMonth = CheckAge('5', 'M', $connect);
+        $mMonth = CheckAge('05', 'M', $connect);
         array_push($m, $mMonth);
 
-        $mMonth = CheckAge('6', 'M', $connect);
+        $mMonth = CheckAge('06', 'M', $connect);
         array_push($m, $mMonth);
 
-        $mMonth = CheckAge('7', 'M', $connect);
+        $mMonth = CheckAge('07', 'M', $connect);
         array_push($m, $mMonth);
 
-        $mMonth = CheckAge('8', 'M', $connect);
+        $mMonth = CheckAge('08', 'M', $connect);
         array_push($m, $mMonth);
 
-        $mMonth = CheckAge('9', 'M', $connect);
+        $mMonth = CheckAge('09', 'M', $connect);
         array_push($m, $mMonth);
 
         $mMonth = CheckAge('10', 'M', $connect);
@@ -65,31 +65,31 @@
         array_push($m, $mMonth);
 
         // Female
-        $fMonrh = CheckAge('1', 'F', $connect);
+        $fMonrh = CheckAge('01', 'F', $connect);
         array_push($f, $fMonrh);
 
-        $fMonrh = CheckAge('2', 'F', $connect);
+        $fMonrh = CheckAge('02', 'F', $connect);
         array_push($f, $fMonrh);
 
-        $fMonrh = CheckAge('3', 'F', $connect);
+        $fMonrh = CheckAge('03', 'F', $connect);
         array_push($f, $fMonrh);
 
-        $fMonth = CheckAge('4', 'F', $connect);
+        $fMonth = CheckAge('04', 'F', $connect);
         array_push($f, $fMonth);
 
-        $fMonth = CheckAge('5', 'F', $connect);
+        $fMonth = CheckAge('05', 'F', $connect);
         array_push($f, $fMonth);
 
-        $fMonth = CheckAge('6', 'F', $connect);
+        $fMonth = CheckAge('06', 'F', $connect);
         array_push($f, $fMonth);
 
-        $fMonth = CheckAge('7', 'F', $connect);
+        $fMonth = CheckAge('07', 'F', $connect);
         array_push($f, $fMonth);
 
-        $fMonth = CheckAge('8', 'F', $connect);
+        $fMonth = CheckAge('08', 'F', $connect);
         array_push($f, $fMonth);
 
-        $fMonth = CheckAge('9', 'F', $connect);
+        $fMonth = CheckAge('09', 'F', $connect);
         array_push($f, $fMonth);
 
         $fMonth = CheckAge('10', 'F', $connect);

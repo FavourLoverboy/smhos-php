@@ -20,12 +20,6 @@
                 </a>
             </li>
             <li>
-                <a href='h_members'>
-                    <i class='fa fa-users'></i>
-                    <p>H. Members</p>
-                </a>
-            </li>
-            <li>
                 <a href='login'>
                     <i class='fa fa-sign-in'></i>
                     <p>Login</p>
