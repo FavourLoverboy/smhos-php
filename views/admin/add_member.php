@@ -59,41 +59,65 @@
         if(!$checkEmail){
             if(!($errC || $errH)){
 
-                $month = substr($dob, -5, -3);
+                $adults = array();
 
-                $tblquery = "INSERT INTO members VALUES(:id, :createdBy, :last_name, :first_name, :other_name, :email, :number, :address, :baptise, :sex, :dob, :month, :marital_status, :lga, :state, :country, :continent, :username, :password, :profile, :login, :homecell_id, :church_id, :date, :status)";
+                $tblquery = "SELECT dob FROM members WHERE homecell_id = :h";
                 $tblvalue = array(
-                    ':id' => NULL,
-                    ':createdBy' => $_SESSION['myId'],
-                    ':last_name' => htmlspecialchars(ucwords($lname)),
-                    ':first_name' => htmlspecialchars(ucwords($fname)),
-                    ':other_name' => htmlspecialchars(ucwords($other)),
-                    ':email' => htmlspecialchars($email),
-                    ':number' => htmlspecialchars($number),
-                    ':address' => htmlspecialchars(ucwords($address)),
-                    ':baptise' => htmlspecialchars($baptise),
-                    ':sex' => htmlspecialchars(ucwords($sex)),
-                    ':dob' => htmlspecialchars($dob),
-                    ':month' => htmlspecialchars($month),
-                    ':marital_status' => htmlspecialchars(ucwords($marital_status)),
-                    ':lga' => htmlspecialchars(ucwords($lga)),
-                    ':state' => htmlspecialchars(ucwords($state)),
-                    ':country' => htmlspecialchars(ucwords($country)),
-                    ':continent' => htmlspecialchars(ucwords($continent)),
-                    ':username' => htmlspecialchars(ucwords($username)),
-                    ':password' => $encryptPassword,
-                    ':profile' => 'profile.png',
-                    ':login' => '',
-                    ':homecell_id' => $homecell_id,
-                    ':church_id' => $church_id,
-                    ':date' => date("Y-m-d h:i"),
-                    ':status' => '1'
+                    ':h' => $homecell_id
                 );
-                $insert = $connect->tbl_insert($tblquery, $tblvalue);
-                if($insert){
-                    $_SESSION['Message'] = 'Member has been added';
-                    echo "<script>  window.location='members' </script>";
-                }          
+                $age = $connect->tbl_select($tblquery, $tblvalue);
+                
+                foreach($age as $data){
+                    extract($data);
+                    $bday = new DateTime($dob); // Your date of birth
+                    $today = new Datetime(date('Y-m-d'));
+                    $diff = $today->diff($bday);
+                    
+                    
+                    if($diff->y >= 18){
+                        array_push($adults, '1');
+                    }
+                }
+
+                if(count($adults) < 10){
+                    $month = substr($dob, -5, -3);
+
+                    $tblquery = "INSERT INTO members VALUES(:id, :createdBy, :last_name, :first_name, :other_name, :email, :number, :address, :baptise, :sex, :dob, :month, :marital_status, :lga, :state, :country, :continent, :username, :password, :profile, :login, :homecell_id, :church_id, :date, :status)";
+                    $tblvalue = array(
+                        ':id' => NULL,
+                        ':createdBy' => $_SESSION['myId'],
+                        ':last_name' => htmlspecialchars(ucwords($lname)),
+                        ':first_name' => htmlspecialchars(ucwords($fname)),
+                        ':other_name' => htmlspecialchars(ucwords($other)),
+                        ':email' => htmlspecialchars($email),
+                        ':number' => htmlspecialchars($number),
+                        ':address' => htmlspecialchars(ucwords($address)),
+                        ':baptise' => htmlspecialchars($baptise),
+                        ':sex' => htmlspecialchars(ucwords($sex)),
+                        ':dob' => htmlspecialchars($dob),
+                        ':month' => htmlspecialchars($month),
+                        ':marital_status' => htmlspecialchars(ucwords($marital_status)),
+                        ':lga' => htmlspecialchars(ucwords($lga)),
+                        ':state' => htmlspecialchars(ucwords($state)),
+                        ':country' => htmlspecialchars(ucwords($country)),
+                        ':continent' => htmlspecialchars(ucwords($continent)),
+                        ':username' => htmlspecialchars(ucwords($username)),
+                        ':password' => $encryptPassword,
+                        ':profile' => 'profile.png',
+                        ':login' => '',
+                        ':homecell_id' => $homecell_id,
+                        ':church_id' => $church_id,
+                        ':date' => date("Y-m-d h:i"),
+                        ':status' => '1'
+                    );
+                    $insert = $connect->tbl_insert($tblquery, $tblvalue);
+                    if($insert){
+                        $_SESSION['Message'] = 'Member has been added';
+                        echo "<script>  window.location='members' </script>";
+                    }
+                }else{
+                    $_SESSION['Message'] = 'Homecell has reach it maximum adult limit';
+                }       
             }
         }else{
             $_SESSION['Message'] = 'email already taking';
