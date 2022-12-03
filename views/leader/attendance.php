@@ -3,6 +3,11 @@
     $_SESSION['MessageOther'] = '';
     $_SESSION['lname'] = '';
     $_SESSION['fname'] =  '';
+
+    if(date('l') != 'Tuesday'){
+        echo "<script>  window.location='dashboard' </script>";
+    }
+
     if($_POST['sign']){
         extract($_POST);
 

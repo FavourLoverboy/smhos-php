@@ -9,13 +9,21 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="row">
-                <div class="col-3">
-                    <a href="add_theme">
-                        <button type="button" class="btn btn-info ml-2">Add Theme</button>
-                    </a>
-                </div>
-            </div>
+            <?php
+
+                if(date('l') == 'Tuesday'){
+                    echo "
+                        <div class='row'>
+                            <div class='col-3'>
+                                <a href='add_theme'>
+                                    <button type='button' class='btn btn-info ml-2'>Add Theme</button>
+                                </a>
+                            </div>
+                        </div>
+                    ";
+                }
+
+            ?>
 
             <div class="card-header">
                 <h4 class="card-title">Themes</h4>

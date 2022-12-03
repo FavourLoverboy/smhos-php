@@ -44,7 +44,7 @@
 
                 $tblquery = "SELECT dob FROM members WHERE homecell_id = :h";
                 $tblvalue = array(
-                    ':h' => $homecell_id
+                    ':h' => $_SESSION['homecell_id']
                 );
                 $age = $connect->tbl_select($tblquery, $tblvalue);
                 

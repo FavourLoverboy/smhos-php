@@ -1,6 +1,10 @@
 <?php 
     $_SESSION['Message'] = '';
 
+    if(date('l') != 'Tuesday'){
+        echo "<script>  window.location='themes' </script>";
+    }
+
     if($_POST){
         extract($_POST);
 

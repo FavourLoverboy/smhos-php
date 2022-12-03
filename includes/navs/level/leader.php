@@ -100,12 +100,17 @@
                     <p>Member Request</p>
                 </a>
             </li>
-            <li>
-                <a href='attendance'>
-                    <i class='fa fa-sign-in'></i>
-                    <p>Sign In</p>
-                </a>
-            </li>
         ";
+            
+        if(date('l') == 'Tuesday'){
+            echo "
+                <li>
+                    <a href='attendance'>
+                        <i class='fa fa-sign-in'></i>
+                        <p>Sign In</p>
+                    </a>
+                </li>
+            ";
+        }
     }
 ?>
