@@ -21,7 +21,9 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- title -->
-        <?php echo $_SESSION['page_title']; ?>
+        <title>
+            <?php echo $_SESSION['page_title']; ?>
+        </title>
 
         <!-- CDNs -->
 

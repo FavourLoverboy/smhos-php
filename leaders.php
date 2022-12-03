@@ -1,4 +1,5 @@
 <?php include('includes/authenticate/header.php');?>
+
 <?php 
     $errMessage = "";
     if($_POST){
@@ -85,6 +86,10 @@
         $_SESSION['page_title'] = $content;
     }
 ?>
+
+    <title>
+        <?php echo 'Login | ' . $_SESSION['page_title']; ?>
+    </title>
     <div class="row">
         <div class="col-lg-6 d-none d-lg-block bg-login-image2"></div>
         <div class="col-lg-6">

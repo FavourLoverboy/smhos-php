@@ -67,7 +67,21 @@
             $errMessage = 'invalid email';
         }
     }
+
+    $tblquery = "SELECT content FROM setting WHERE type = :t";
+    $tblvalue = array(
+        ':t' => 'title'
+    );
+    $title = $connect->tbl_select($tblquery, $tblvalue);
+    foreach($title as $data){
+        extract($data);
+        $_SESSION['page_title'] = $content;
+    }
 ?>
+
+    <title>
+        <?php echo 'Login | ' . $_SESSION['page_title']; ?>
+    </title>
     <div class="row">
         <div class="col-lg-6 d-none d-lg-block bg-login-image2"></div>
         <div class="col-lg-6">
