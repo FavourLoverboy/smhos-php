@@ -10,7 +10,7 @@
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             $_SESSION['validate_email'] = true;
         }
-
+        $_SESSION['validate_email'] = true;
         if($_SESSION['validate_email'] == true){
             // Checking for email or username
             $tblquery = "SELECT * FROM members WHERE (email = :login || username = :login)";
