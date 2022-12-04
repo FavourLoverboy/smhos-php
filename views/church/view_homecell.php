@@ -34,8 +34,8 @@
             <div class="card-footer ">
                 <hr>
                 <div class="stats">
-                    <i class="fa fa-refresh"></i>
-                    Update Now
+                    <i class="fa fa-clock-o"></i>
+                    All Members
                 </div>
             </div>
         </div>

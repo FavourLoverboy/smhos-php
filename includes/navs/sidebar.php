@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="white" data-active-color="danger">
+<div class="sidebar sidebar-mobile" data-color="white" data-active-color="danger">
     <div class="logo">
         <a href="dashboard" class="simple-text logo-normal">
             <!-- SMHOS -->

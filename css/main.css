@@ -3869,7 +3869,8 @@
       right: 0;
       transform: translate3d(260px, 0, 0); }
     .nav-open .sidebar {
-      transform: translate3d(0px, 0, 0); }
+      transform: translate3d(0px, 0, 0); 
+    }
     .nav-open body {
       position: relative;
       overflow-x: hidden; }
@@ -3877,7 +3878,8 @@
       transform: translate3d(-260px, 0, 0); }
     .nav-open .menu-on-right .navbar-collapse,
     .nav-open .menu-on-right .sidebar {
-      transform: translate3d(0px, 0, 0); }
+      transform: translate3d(0px, 0, 0); 
+    }
     .nav-open .menu-on-right .navbar-translate {
       transform: translate3d(-300px, 0, 0); }
     .nav-open .menu-on-right #bodyClick {
@@ -4236,4 +4238,22 @@
 }
 .popup-main .main-box .bottom{
     color: #F8F9FA;
+}
+
+/* MY Styles */
+@media screen and (max-width: 991px){
+    .profile-pics{
+        /* background: red; */
+        padding: 0px 10px;
+    }
+    .profile-pics img{
+        height: 50px;
+        width: 50px;
+    }  
+    .sidebar{
+      transform: translate3d(-260px, 0, 0);
+    }
+    .sidebar.active{
+      transform: translate3d(0px, 0, 0);
+    }
 }

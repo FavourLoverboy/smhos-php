@@ -34,8 +34,8 @@
             <div class="card-footer ">
                 <hr>
                 <div class="stats">
-                    <i class="fa fa-refresh"></i>
-                    Update Now
+                    <i class="fa fa-clock-o"></i>
+                    All Members
                 </div>
             </div>
         </div>
@@ -74,8 +74,8 @@
             <div class="card-footer ">
                 <hr>
                 <div class="stats">
-                    <i class="fa fa-calendar-o"></i>
-                    Last day
+                    <i class="fa fa-clock-o"></i>
+                    All Homecells
                 </div>
             </div>
         </div>

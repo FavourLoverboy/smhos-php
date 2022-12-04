@@ -11290,3 +11290,8 @@
   .show{
     display:block!important;
   }
+
+/* MY Styles */
+body{
+    overflow-x: hidden;
+}
